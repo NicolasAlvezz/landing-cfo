@@ -4,7 +4,13 @@ import { useState, type FormEvent } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-const CONTACT_EMAIL = "hola@cfo-ai.uy";
+const CONTACT_EMAILS = [
+  "emivan12@gmail.com",
+  "nicoalvez28@gmail.com",
+  "tomasckian@gmail.com",
+  "maurellinacho@gmail.com",
+  "tomyfugassa@gmail.com",
+];
 
 export default function DemoForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -80,10 +86,10 @@ export default function DemoForm() {
             <p className="mt-8 text-[13.5px] text-[oklch(0.55_0.015_55)]">
               ¿Preferís escribirnos directo?{" "}
               <a
-                href={`mailto:${CONTACT_EMAIL}`}
+                href={`mailto:${CONTACT_EMAILS.join(",")}`}
                 className="font-semibold text-white underline underline-offset-4"
               >
-                {CONTACT_EMAIL}
+                Escribinos por mail
               </a>
             </p>
           </div>

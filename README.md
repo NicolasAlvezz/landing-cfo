@@ -42,20 +42,30 @@ El formulario del CTA principal envía un `POST` a `/api/demo`
 (`src/app/api/demo/route.ts`). Hoy esa ruta:
 
 1. Valida los campos obligatorios (nombre, empresa, email).
-2. Loguea la solicitud en el servidor (para no perder ningún lead mientras no haya un
-   servicio externo conectado).
-3. Si existe la variable de entorno `DEMO_REQUEST_WEBHOOK_URL`, reenvía la solicitud a esa
-   URL como POST con el JSON de la solicitud — útil para conectar un webhook de Slack, un
-   Google Sheet (via Apps Script), Zapier/Make, o un CRM.
+2. Loguea la solicitud en el servidor (para no perder ningún lead).
+3. Si están configuradas `EMAIL_USER` y `EMAIL_APP_PASSWORD`, envía un mail con los datos
+   de la solicitud a todo el equipo (ver `NOTIFY_RECIPIENTS` en `route.ts`).
+4. Si además existe `DEMO_REQUEST_WEBHOOK_URL`, reenvía la solicitud a esa URL como POST
+   con el JSON — útil para sumar un webhook de Slack, un Google Sheet (via Apps Script),
+   Zapier/Make, o un CRM, en paralelo al mail.
 
-### Para recibir notificaciones reales
+### Configurar el envío de mails (obligatorio para recibir notificaciones)
 
-La forma más simple es configurar `DEMO_REQUEST_WEBHOOK_URL` en las variables de entorno
-del deploy (por ejemplo en Vercel: Project Settings → Environment Variables) apuntando a
-un webhook de Slack, Zapier, Make o un Google Apps Script que escriba en una planilla.
+El envío usa Gmail vía SMTP con [Nodemailer](https://nodemailer.com), así que no requiere
+verificar ningún dominio. Pasos:
 
-Si preferís mandar emails directamente, se puede sumar un proveedor como
-[Resend](https://resend.com) dentro de `src/app/api/demo/route.ts`.
+1. Elegí qué cuenta de Gmail va a actuar como remitente (puede ser cualquiera de las
+   direcciones del equipo, por ejemplo `nicoalvez28@gmail.com`).
+2. En esa cuenta, activá la verificación en dos pasos y generá una
+   [contraseña de aplicación](https://myaccount.google.com/apppasswords) (App Password).
+3. En Vercel: Project Settings → Environment Variables, agregá:
+   - `EMAIL_USER`: la dirección de Gmail elegida.
+   - `EMAIL_APP_PASSWORD`: la contraseña de aplicación generada (no la contraseña normal
+     de la cuenta).
+4. Redeployá el proyecto para que tome las nuevas variables.
+
+Mientras esas variables no estén configuradas, las solicitudes se siguen guardando en los
+logs del servidor (Vercel → Deployments → Logs) pero no se manda ningún mail.
 
 ## Deploy
 

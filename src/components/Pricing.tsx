@@ -1,8 +1,6 @@
 const PLANS = [
   {
     name: "Starter",
-    price: "USD 20–40",
-    period: "/mes",
     audience: "Emprendimientos y equipos de 1 a 10 personas",
     features: [
       "Proyección de flujo de caja",
@@ -14,8 +12,6 @@ const PLANS = [
   },
   {
     name: "Growth",
-    price: "USD 80–120",
-    period: "/mes",
     audience: "PyMEs en crecimiento de 11 a 50 personas",
     features: [
       "Todo lo de Starter",
@@ -28,8 +24,6 @@ const PLANS = [
   },
   {
     name: "A medida",
-    price: "USD 150–200+",
-    period: "/mes",
     audience: "Empresas de más de 50 personas o necesidades específicas",
     features: [
       "Todo lo de Growth",
@@ -53,9 +47,9 @@ export default function Pricing() {
             Un plan según el tamaño de tu empresa
           </h2>
           <p className="mt-4.5 text-base leading-relaxed text-ink-soft sm:text-[16.5px]">
-            Estos rangos surgen de lo que nos dijeron las empresas que ya consultamos. Estamos
-            terminando de definir el precio final — agendá una demo y te armamos una propuesta a
-            medida de tu operación.
+            Armamos tres planes según el tamaño de tu empresa y lo que nos dijeron las empresas
+            que ya consultamos. Estamos terminando de definir el precio final — agendá una demo y
+            te armamos una propuesta a medida de tu operación.
           </p>
         </div>
 
@@ -80,16 +74,6 @@ export default function Pricing() {
               >
                 {plan.audience}
               </p>
-              <div className="mt-5 flex items-baseline gap-1.5">
-                <span
-                  className={`font-serif text-[30px] font-semibold ${plan.highlighted ? "text-white" : "text-ink"}`}
-                >
-                  {plan.price}
-                </span>
-                <span className={`text-[13px] ${plan.highlighted ? "text-[oklch(0.6_0.015_55)]" : "text-ink-faint"}`}>
-                  {plan.period}
-                </span>
-              </div>
 
               <hr
                 className={`my-[22px] h-px border-0 ${plan.highlighted ? "bg-[oklch(0.3_0.02_50)]" : "bg-line"}`}

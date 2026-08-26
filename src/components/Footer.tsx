@@ -1,4 +1,10 @@
-const CONTACT_EMAIL = "hola@cfo-ai.uy";
+const CONTACT_EMAILS = [
+  "emivan12@gmail.com",
+  "nicoalvez28@gmail.com",
+  "tomasckian@gmail.com",
+  "maurellinacho@gmail.com",
+  "tomyfugassa@gmail.com",
+];
 
 export default function Footer() {
   return (
@@ -14,10 +20,10 @@ export default function Footer() {
         </p>
 
         <a
-          href={`mailto:${CONTACT_EMAIL}`}
+          href={`mailto:${CONTACT_EMAILS.join(",")}`}
           className="text-[12.5px] font-semibold text-accent-dark"
         >
-          {CONTACT_EMAIL}
+          Escribinos
         </a>
       </div>
       <div className="border-t border-line py-5 text-center text-[11.5px] text-ink-faint">
