@@ -1,54 +1,31 @@
-const CONCERNS = [
-  {
-    concern: "Seguridad y confidencialidad de la información",
-    answer:
-      "Fue la preocupación más repetida en nuestra validación. Tus datos financieros son sensibles y así los tratamos: cifrado, control de accesos y vos decidís qué se conecta.",
-    italic: false,
-  },
-  {
-    concern: "Exactitud de los resultados",
-    answer:
-      "Cada conclusión muestra los datos que la respaldan y el cálculo puede ser revisado y auditado, no es una caja negra.",
-    italic: false,
-  },
-  {
-    concern: "“Que reemplace el criterio de mi contador”",
-    answer:
-      "Una de las empresas consultadas lo dijo explícitamente, y coincidimos: CFO.ai se posiciona como complemento, no reemplazo. Tu contador o asesor puede validar cada informe.",
-    italic: true,
-  },
-  {
-    concern: "Tiempo para cargar la información",
-    answer:
-      "Nos integramos con lo que ya usás (Odoo, planillas, sistema contable) para minimizar la carga manual desde el primer día.",
-    italic: false,
-  },
-];
+"use client";
+
+import { useLanguage } from "@/lib/language-context";
 
 export default function Trust() {
+  const { t } = useLanguage();
+
   return (
     <section className="bg-ink py-[76px] sm:py-[76px]">
       <div className="container-page">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
             <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-[oklch(0.78_0.09_50)]">
-              Confianza, no caja negra
+              {t.trust.eyebrow}
             </span>
             <h2 className="mt-4 font-serif text-[26px] font-semibold leading-tight text-white sm:text-4xl">
-              Lo que más te preocuparía, es lo primero que resolvimos
+              {t.trust.h2}
             </h2>
             <p className="mt-4.5 max-w-[400px] text-base leading-relaxed text-[oklch(0.65_0.015_55)]">
-              Le preguntamos directamente a dueños, gerentes y contadores qué les preocuparía de
-              usar una herramienta como esta. Estas fueron sus principales dudas — y cómo las
-              abordamos.
+              {t.trust.p}
             </p>
           </div>
 
           <div className="flex flex-col">
-            {CONCERNS.map((item, i) => (
+            {t.trust.concerns.map((item, i) => (
               <div
                 key={item.concern}
-                className={`flex gap-4 py-[22px] ${i === CONCERNS.length - 1 ? "border-y" : "border-t"} border-[oklch(0.3_0.02_50)]`}
+                className={`flex gap-4 py-[22px] ${i === t.trust.concerns.length - 1 ? "border-y" : "border-t"} border-[oklch(0.3_0.02_50)]`}
               >
                 <svg
                   width="18"

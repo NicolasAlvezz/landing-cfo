@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -12,9 +14,15 @@ const CONTACT_EMAILS = [
   "tomyfugassa@gmail.com",
 ];
 
+// Los valores enviados al backend/mail quedan siempre en español, sin importar
+// el idioma de la UI, para que el equipo reciba las solicitudes en un formato
+// consistente.
+const ROL_VALUES = translations.es.demoForm.fields.rol.options;
+
 export default function DemoForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const { t } = useLanguage();
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,14 +41,14 @@ export default function DemoForm() {
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(body.error ?? "No pudimos enviar tu solicitud. Intentá de nuevo.");
+        throw new Error(body.error ?? t.demoForm.errors.generic);
       }
 
       setStatus("success");
       form.reset();
     } catch (err) {
       setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "Ocurrió un error inesperado.");
+      setErrorMsg(err instanceof Error ? err.message : t.demoForm.errors.unexpected);
     }
   }
 
@@ -50,22 +58,17 @@ export default function DemoForm() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div>
             <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-[oklch(0.78_0.09_50)]">
-              Agendemos una demo
+              {t.demoForm.eyebrow}
             </span>
             <h2 className="mt-4 font-serif text-[26px] font-semibold leading-tight text-white sm:text-4xl">
-              Contanos de tu empresa y te mostramos CFO.ai en acción
+              {t.demoForm.h2}
             </h2>
             <p className="mt-4.5 max-w-[400px] text-base leading-relaxed text-[oklch(0.65_0.015_55)]">
-              En 20 minutos te mostramos cómo se vería tu flujo de caja proyectado, qué alertas
-              tendrías hoy y cómo se integraría con tu sistema actual.
+              {t.demoForm.p}
             </p>
 
             <ul className="mt-[30px] flex flex-col gap-3.5">
-              {[
-                "Demo personalizada con datos de ejemplo de tu sector",
-                "Sin costo ni compromiso",
-                "Podés invitar a tu contador o socio",
-              ].map((item) => (
+              {t.demoForm.bullets.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-[oklch(0.72_0.015_55)]">
                   <svg
                     width="16"
@@ -84,12 +87,12 @@ export default function DemoForm() {
             </ul>
 
             <p className="mt-8 text-[13.5px] text-[oklch(0.55_0.015_55)]">
-              ¿Preferís escribirnos directo?{" "}
+              {t.demoForm.contactPrefix}{" "}
               <a
                 href={`mailto:${CONTACT_EMAILS.join(",")}`}
                 className="font-semibold text-white underline underline-offset-4"
               >
-                Escribinos por mail
+                {t.demoForm.contactLink}
               </a>
             </p>
           </div>
@@ -103,57 +106,77 @@ export default function DemoForm() {
                   </svg>
                 </span>
                 <h3 className="mt-5 font-serif text-lg font-semibold text-ink">
-                  ¡Listo, recibimos tu solicitud!
+                  {t.demoForm.success.title}
                 </h3>
-                <p className="mt-2 text-sm text-ink-soft">
-                  Te vamos a escribir en las próximas horas para coordinar el mejor horario para
-                  la demo.
-                </p>
+                <p className="mt-2 text-sm text-ink-soft">{t.demoForm.success.p}</p>
                 <button
                   type="button"
                   onClick={() => setStatus("idle")}
                   className="mt-6 text-sm font-semibold text-accent-dark hover:text-accent"
                 >
-                  Enviar otra solicitud
+                  {t.demoForm.success.another}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-[18px]">
                 <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2">
-                  <Field label="Nombre" name="nombre" required placeholder="Tu nombre" />
-                  <Field label="Empresa" name="empresa" required placeholder="Nombre de tu empresa" />
+                  <Field
+                    label={t.demoForm.fields.nombre.label}
+                    name="nombre"
+                    required
+                    placeholder={t.demoForm.fields.nombre.placeholder}
+                  />
+                  <Field
+                    label={t.demoForm.fields.empresa.label}
+                    name="empresa"
+                    required
+                    placeholder={t.demoForm.fields.empresa.placeholder}
+                  />
                 </div>
                 <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2">
-                  <Field label="Email" name="email" type="email" required placeholder="vos@empresa.com" />
-                  <Field label="Teléfono (opcional)" name="telefono" type="tel" placeholder="+598 ..." />
+                  <Field
+                    label={t.demoForm.fields.email.label}
+                    name="email"
+                    type="email"
+                    required
+                    placeholder={t.demoForm.fields.email.placeholder}
+                  />
+                  <Field
+                    label={t.demoForm.fields.telefono.label}
+                    name="telefono"
+                    type="tel"
+                    placeholder={t.demoForm.fields.telefono.placeholder}
+                  />
                 </div>
 
                 <label className="flex flex-col gap-1.5">
-                  <span className="text-[12.5px] font-semibold text-ink-soft">Rol en la empresa</span>
+                  <span className="text-[12.5px] font-semibold text-ink-soft">
+                    {t.demoForm.fields.rol.label}
+                  </span>
                   <select
                     name="rol"
                     className="rounded-[2px] border border-line bg-white px-[13px] py-[11px] text-[14.5px] text-ink outline-none focus:border-accent"
                     defaultValue=""
                   >
                     <option value="" disabled>
-                      Seleccioná una opción
+                      {t.demoForm.fields.rol.placeholder}
                     </option>
-                    <option value="Dueño/a o socio/a">Dueño/a o socio/a</option>
-                    <option value="Director/a o gerente general">Director/a o gerente general</option>
-                    <option value="Contador/a interno/a">Contador/a interno/a</option>
-                    <option value="Responsable administrativo">Responsable administrativo</option>
-                    <option value="Otro">Otro</option>
+                    {t.demoForm.fields.rol.options.map((label, i) => (
+                      <option key={ROL_VALUES[i]} value={ROL_VALUES[i]}>
+                        {label}
+                      </option>
+                    ))}
                   </select>
                 </label>
 
                 <label className="flex flex-col gap-1.5">
                   <span className="text-[12.5px] font-semibold text-ink-soft">
-                    Contanos brevemente tu situación (opcional)
+                    {t.demoForm.fields.mensaje.label}
                   </span>
                   <textarea
                     name="mensaje"
                     rows={3}
-                    placeholder="Ej: manejamos la caja en Excel y nos cuesta anticipar los pagos del mes que viene..."
+                    placeholder={t.demoForm.fields.mensaje.placeholder}
                     className="resize-none rounded-[2px] border border-line bg-white px-[13px] py-[11px] text-[14.5px] text-ink outline-none placeholder:text-ink-faint focus:border-accent"
                   />
                 </label>
@@ -167,12 +190,9 @@ export default function DemoForm() {
                   disabled={status === "loading"}
                   className="mt-1 inline-flex w-full items-center justify-center rounded-[3px] bg-ink px-6 py-[15px] text-[15.5px] font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {status === "loading" ? "Enviando..." : "Agendar demo"}
+                  {status === "loading" ? t.demoForm.submitting : t.demoForm.submit}
                 </button>
-                <p className="text-center text-xs leading-relaxed text-ink-faint">
-                  Al enviar aceptás que te contactemos para coordinar la demo. No compartimos tu
-                  información con terceros.
-                </p>
+                <p className="text-center text-xs leading-relaxed text-ink-faint">{t.demoForm.consent}</p>
               </form>
             )}
           </div>

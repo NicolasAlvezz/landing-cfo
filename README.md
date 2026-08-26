@@ -1,7 +1,7 @@
-# CFO.ai — Landing page
+# Finora — Landing page
 
-Landing page para **CFO.ai**, un CFO con inteligencia artificial que apoya al equipo de
-finanzas de PyMEs a anticipar problemas de caja, entender su rentabilidad y tomar mejores
+Landing page para **Finora**, un CFO con inteligencia artificial que apoya al equipo de
+finanzas de empresas a anticipar problemas de caja, entender su rentabilidad y tomar mejores
 decisiones — sin reemplazar el criterio del contador.
 
 Proyecto de Laboratorio de Proyectos Aplicados — Universidad ORT Uruguay.

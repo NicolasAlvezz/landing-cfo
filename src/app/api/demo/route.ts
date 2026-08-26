@@ -33,7 +33,7 @@ function escapeHtml(value: string) {
 
 function buildEmailText(submission: Record<string, string | null>) {
   return [
-    "Nueva solicitud de demo — CFO.ai",
+    "Nueva solicitud de demo — Finora",
     "",
     `Nombre: ${submission.nombre}`,
     `Empresa: ${submission.empresa}`,
@@ -54,7 +54,7 @@ function buildEmailHtml(submission: Record<string, string | null>) {
 
   return `
     <div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:520px;">
-      <h2 style="margin:0 0 12px;font-size:18px;">Nueva solicitud de demo — CFO.ai</h2>
+      <h2 style="margin:0 0 12px;font-size:18px;">Nueva solicitud de demo — Finora</h2>
       <table style="border-collapse:collapse;">
         ${row("Nombre", submission.nombre)}
         ${row("Empresa", submission.empresa)}
@@ -114,7 +114,7 @@ export async function POST(request: Request) {
       });
 
       await transporter.sendMail({
-        from: `"CFO.ai — Solicitudes de demo" <${emailUser}>`,
+        from: `"Finora — Solicitudes de demo" <${emailUser}>`,
         to: NOTIFY_RECIPIENTS.join(", "),
         replyTo: submission.email,
         subject: `Nueva solicitud de demo — ${submission.empresa}`,

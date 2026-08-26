@@ -2,18 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
-const NAV_LINKS = [
-  { href: "#problema", label: "El problema" },
-  { href: "#producto", label: "Producto" },
-  { href: "#como-funciona", label: "Cómo funciona" },
-  { href: "#validacion", label: "Validación" },
-  { href: "#precios", label: "Precios" },
-  { href: "#faq", label: "FAQ" },
-];
+import { useLanguage } from "@/lib/language-context";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const { locale, toggleLocale, t } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-md">
@@ -22,11 +15,11 @@ export default function Header() {
           href="#top"
           className="flex items-baseline gap-0.5 font-serif text-[22px] font-semibold text-ink"
         >
-          CFO<span className="italic text-accent">.ai</span>
+          Fin<span className="italic text-accent">ora</span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-ink-soft">
-          {NAV_LINKS.map((link) => (
+          {t.header.nav.map((link) => (
             <a key={link.href} href={link.href} className="transition-colors hover:text-ink">
               {link.label}
             </a>
@@ -34,37 +27,55 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
+          <button
+            type="button"
+            onClick={toggleLocale}
+            className="inline-flex items-center justify-center rounded-[3px] border border-line px-3 py-[9px] text-xs font-semibold uppercase tracking-[0.06em] text-ink-soft transition-colors hover:border-ink hover:text-ink"
+            aria-label="Switch language / Cambiar idioma"
+          >
+            {locale === "es" ? "EN" : "ES"}
+          </button>
           <a
             href="#demo"
             className="inline-flex items-center justify-center rounded-[3px] bg-accent px-[22px] py-[11px] text-sm font-semibold text-white transition-opacity hover:opacity-90"
           >
-            Agendar demo
+            {t.header.cta}
           </a>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-[3px] border border-line text-ink"
-          aria-label="Abrir menú"
-          aria-expanded={open}
-        >
-          {open ? (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
-            </svg>
-          ) : (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
-            </svg>
-          )}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            type="button"
+            onClick={toggleLocale}
+            className="inline-flex h-10 items-center justify-center rounded-[3px] border border-line px-3 text-xs font-semibold uppercase tracking-[0.06em] text-ink-soft"
+            aria-label="Switch language / Cambiar idioma"
+          >
+            {locale === "es" ? "EN" : "ES"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-[3px] border border-line text-ink"
+            aria-label={t.header.openMenu}
+            aria-expanded={open}
+          >
+            {open ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {open && (
         <div className="lg:hidden border-t border-line bg-paper">
           <nav className="container-page flex flex-col gap-1 py-4">
-            {NAV_LINKS.map((link) => (
+            {t.header.nav.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -79,7 +90,7 @@ export default function Header() {
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center rounded-[3px] bg-accent px-5 py-2.5 text-sm font-semibold text-white"
             >
-              Agendar demo
+              {t.header.cta}
             </a>
           </nav>
         </div>
