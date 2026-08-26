@@ -9,45 +9,45 @@ const SECTORS = [
 ];
 
 const SYSTEMS = [
-  { name: "Odoo", value: 3 },
-  { name: "Excel / Google Sheets", value: 2 },
-  { name: "ZetaSoftware", value: 1 },
-  { name: "TAREUS", value: 1 },
-  { name: "Memory", value: 1 },
-  { name: "Sistema interno propio", value: 1 },
+  "Odoo",
+  "Excel / Google Sheets",
+  "ZetaSoftware",
+  "TAREUS",
+  "Memory",
+  "Sistemas internos propios",
 ];
-
-const maxSystems = Math.max(...SYSTEMS.map((s) => s.value));
 
 export default function Validation() {
   return (
-    <section id="validacion" className="bg-surface-alt py-20 sm:py-28">
+    <section id="validacion" className="border-b border-line bg-paper-alt py-[76px] sm:py-[72px]">
       <div className="container-page">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-bold uppercase tracking-wider text-brand">
+        <div className="max-w-[640px]">
+          <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-dark">
             Validación de la idea
           </span>
-          <h2 className="text-balance mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+          <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink sm:text-4xl">
             No lo inventamos nosotros, lo dijo el mercado
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-            Antes de construir, encuestamos a dueños, socios, gerentes, contadores y responsables
-            administrativos de empresas uruguayas, difundida por correo, WhatsApp y LinkedIn.
+          <p className="mt-4.5 text-base leading-relaxed text-ink-soft sm:text-[16.5px]">
+            Antes de construir, consultamos a dueños, socios, gerentes, contadores y responsables
+            administrativos de empresas uruguayas de sectores heterogéneos, difundiendo la
+            encuesta por correo, WhatsApp y LinkedIn.
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <div className="rounded-2xl border border-border bg-surface p-7">
-            <h3 className="text-sm font-bold text-ink-soft">Empresas participantes</h3>
-            <p className="mt-2 text-4xl font-extrabold text-ink">9</p>
-            <p className="mt-2 text-sm text-ink-soft">
-              Desde emprendimientos de una persona hasta empresas de más de 50 empleados.
+        <div className="mt-12 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2">
+          <div className="bg-white p-8">
+            <h3 className="text-[13px] font-semibold uppercase tracking-[0.06em] text-ink-faint">
+              Quiénes participaron
+            </h3>
+            <p className="mt-3.5 font-serif text-xl font-semibold leading-snug text-ink">
+              Desde emprendimientos de una persona hasta empresas de más de 50 empleados
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {SECTORS.map((s) => (
                 <span
                   key={s}
-                  className="rounded-full bg-brand-light px-3 py-1 text-xs font-semibold text-brand-dark"
+                  className="inline-flex whitespace-nowrap rounded-full border border-line bg-white px-[15px] py-[7px] text-[13px] font-medium text-ink-soft"
                 >
                   {s}
                 </span>
@@ -55,48 +55,52 @@ export default function Validation() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-border bg-surface p-7">
-            <h3 className="text-sm font-bold text-ink-soft">Sistemas que usan hoy</h3>
-            <div className="mt-4 flex flex-col gap-3">
+          <div className="bg-white p-8">
+            <h3 className="text-[13px] font-semibold uppercase tracking-[0.06em] text-ink-faint">
+              Sistemas que usan hoy
+            </h3>
+            <p className="mt-3.5 font-serif text-xl font-semibold leading-snug text-ink">
+              Desde planillas hasta ERPs — nos integramos con lo que ya tenés funcionando
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
               {SYSTEMS.map((s) => (
-                <div key={s.name}>
-                  <div className="flex items-center justify-between text-xs font-medium text-ink-soft">
-                    <span>{s.name}</span>
-                    <span>{s.value}</span>
-                  </div>
-                  <div className="mt-1 h-2 w-full rounded-full bg-surface-alt">
-                    <div
-                      className="h-2 rounded-full bg-accent"
-                      style={{ width: `${(s.value / maxSystems) * 100}%` }}
-                    />
-                  </div>
-                </div>
+                <span
+                  key={s}
+                  className="inline-flex whitespace-nowrap rounded-full border border-[oklch(0.85_0.05_152)] bg-forest-soft px-[15px] py-[7px] text-[13px] font-medium text-[oklch(0.32_0.07_152)]"
+                >
+                  {s}
+                </span>
               ))}
             </div>
           </div>
 
-          <div className="flex flex-col gap-6">
-            <div className="rounded-2xl border border-border bg-surface p-7">
-              <h3 className="text-sm font-bold text-ink-soft">Utilidad percibida</h3>
-              <p className="mt-2 text-4xl font-extrabold text-ink">56%</p>
-              <p className="mt-2 text-sm text-ink-soft">
-                calificó la herramienta con 4 o 5 sobre 5 al preguntarle qué tan útil sería para su
-                empresa.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-border bg-surface p-7">
-              <h3 className="text-sm font-bold text-ink-soft">Disposición a pagar</h3>
-              <p className="mt-2 text-4xl font-extrabold text-ink">USD 20–200</p>
-              <p className="mt-2 text-sm text-ink-soft">
-                por mes, según el tamaño de la empresa y las funcionalidades incluidas.
-              </p>
-            </div>
+          <div className="bg-white p-8">
+            <h3 className="text-[13px] font-semibold uppercase tracking-[0.06em] text-ink-faint">
+              Utilidad percibida
+            </h3>
+            <p className="mt-3.5 font-serif text-2xl font-semibold leading-snug text-ink">
+              La mayoría la calificó como útil o muy útil
+            </p>
+            <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">
+              (4 o 5 sobre 5) al preguntarle qué tan útil sería una herramienta así para su
+              empresa.
+            </p>
+          </div>
+
+          <div className="bg-white p-8">
+            <h3 className="text-[13px] font-semibold uppercase tracking-[0.06em] text-ink-faint">
+              Disposición a pagar
+            </h3>
+            <p className="mt-3.5 font-serif text-[32px] font-semibold text-ink">USD 20–200</p>
+            <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">
+              por mes, según el tamaño de la empresa y las funcionalidades incluidas.
+            </p>
           </div>
         </div>
 
-        <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-ink-soft">
-          Datos relevados el 26 de agosto de 2026 como parte del anteproyecto del equipo. Seguimos
-          entrevistando empresas interesadas en profundizar la validación.
+        <p className="mt-9 max-w-[640px] text-sm leading-relaxed text-ink-faint">
+          Seguimos entrevistando empresas interesadas en profundizar la validación — si te
+          interesa participar, contanos en el formulario de abajo.
         </p>
       </div>
     </section>

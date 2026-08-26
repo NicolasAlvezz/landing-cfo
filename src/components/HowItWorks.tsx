@@ -18,28 +18,29 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" className="bg-background py-20 sm:py-28">
+    <section id="como-funciona" className="bg-paper py-[76px] sm:py-[72px]">
       <div className="container-page">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-bold uppercase tracking-wider text-brand">
+        <div className="max-w-[640px]">
+          <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-dark">
             Cómo funciona
           </span>
-          <h2 className="text-balance mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+          <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink sm:text-4xl">
             De tus datos a una decisión, en tres pasos
           </h2>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3">
-          {STEPS.map((step, i) => (
-            <div key={step.n} className="relative">
-              <div className="flex items-center gap-4">
-                <span className="text-4xl font-extrabold text-border">{step.n}</span>
-                {i < STEPS.length - 1 && (
-                  <span className="hidden h-px flex-1 bg-border sm:block" />
-                )}
+        <div className="mt-14 grid grid-cols-1 gap-12 sm:grid-cols-3">
+          {STEPS.map((step) => (
+            <div key={step.n}>
+              <div
+                className="font-serif text-[44px] font-semibold text-accent-soft"
+                style={{ WebkitTextStroke: "1.5px var(--color-accent)" }}
+              >
+                {step.n}
               </div>
-              <h3 className="mt-4 text-lg font-bold text-ink">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{step.desc}</p>
+              <hr className="mt-[18px] h-px border-0 bg-line" />
+              <h3 className="mt-[18px] text-lg font-semibold text-ink">{step.title}</h3>
+              <p className="mt-2.5 text-[14.5px] leading-relaxed text-ink-soft">{step.desc}</p>
             </div>
           ))}
         </div>

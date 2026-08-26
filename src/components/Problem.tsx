@@ -1,69 +1,75 @@
-const PAIN_POINTS = [
+const ROWS = [
   {
-    title: "No saben cuánta caja van a tener",
-    desc: "La dificultad para anticipar la disponibilidad futura de caja fue el problema más mencionado en nuestra validación.",
+    before: "No sabés cuánta caja vas a tener la semana que viene",
+    after: "Proyección de flujo de caja semana a semana",
   },
   {
-    title: "Los clientes pagan tarde",
-    desc: "Las demoras de clientes en los pagos generan descalces constantes entre facturar, cobrar y pagar.",
+    before: "Te enterás de un faltante de dinero cuando ya es tarde",
+    after: "Alertas tempranas ante posibles faltantes",
   },
   {
-    title: "Los costos suben sin aviso",
-    desc: "Aumentos inesperados de costos y rentabilidad menor a la esperada aparecen entre los problemas de los últimos 12 meses.",
+    before: "La info está repartida entre Odoo, planillas y mails",
+    after: "Todo integrado con el sistema que ya usás",
   },
   {
-    title: "La info está, pero dispersa",
-    desc: "Incluso empresas con Odoo, planillas o sistemas contables no logran convertir esos datos en proyecciones o alertas útiles.",
+    before: "Una sola persona interpreta todo, sin tiempo ni respaldo",
+    after: "Recomendaciones explicables, revisables por tu contador",
   },
   {
-    title: "Financiarse es una carrera de obstáculos",
-    desc: "Reunir y presentar la documentación que piden bancos e instituciones financieras es lento y poco claro.",
-  },
-  {
-    title: "La decisión recae en una sola persona",
-    desc: "En la mayoría de los casos, el dueño o gerente interpreta la información financiera mientras atiende todo lo demás del negocio.",
+    before: "Pedir financiamiento implica juntar documentación a ciegas",
+    after: "Información clara y ordenada, lista para presentar",
   },
 ];
 
 export default function Problem() {
   return (
-    <section id="problema" className="bg-background py-20 sm:py-28">
+    <section id="problema" className="bg-paper py-16 sm:py-[72px]">
       <div className="container-page">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-bold uppercase tracking-wider text-brand">
+        <div className="max-w-[640px]">
+          <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-dark">
             Lo que encontramos al validar la idea
           </span>
-          <h2 className="text-balance mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+          <h2 className="mt-3.5 font-serif text-3xl font-semibold leading-[1.15] text-ink sm:text-4xl">
             Gestionar la caja de una PyME a pulmón es agotador
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-            Encuestamos a dueños, gerentes, contadores y responsables administrativos de empresas
-            uruguayas de distintos sectores y tamaños. Estos fueron los problemas que más se repitieron.
+          <p className="mt-3.5 text-base leading-relaxed text-ink-soft sm:text-[16.5px]">
+            Consultamos a dueños, gerentes, contadores y responsables administrativos de empresas
+            uruguayas de distintos sectores y tamaños. Esto fue lo que más se repitió — y así
+            cambia con CFO.ai.
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {PAIN_POINTS.map((point) => (
-            <div
-              key={point.title}
-              className="rounded-2xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md"
-            >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-light text-brand">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 9v4m0 4h.01M10.29 3.86l-8.18 14.18A1.5 1.5 0 0 0 3.5 20h17a1.5 1.5 0 0 0 1.4-1.96l-8.18-14.18a1.5 1.5 0 0 0-2.43 0Z" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+        <div className="mt-9 overflow-hidden border border-line">
+          <div className="grid grid-cols-2">
+            <div className="border-r border-line bg-paper-alt px-4 py-3.5 sm:px-6">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-faint sm:text-xs">
+                Hoy, sin CFO.ai
+              </span>
+            </div>
+            <div className="bg-ink px-4 py-3.5 sm:px-6">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[oklch(0.78_0.09_50)] sm:text-xs">
+                Con CFO.ai
+              </span>
+            </div>
+          </div>
+          {ROWS.map((row) => (
+            <div key={row.before} className="grid grid-cols-2 border-t border-line">
+              <div className="border-r border-line px-4 py-4 text-sm text-ink-soft sm:px-6 sm:text-[14.5px]">
+                {row.before}
               </div>
-              <h3 className="mt-4 text-base font-bold text-ink">{point.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{point.desc}</p>
+              <div className="px-4 py-4 text-sm text-ink sm:px-6 sm:text-[14.5px]">{row.after}</div>
             </div>
           ))}
         </div>
 
-        <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-brand/20 bg-brand-light p-6 text-center sm:p-8">
-          <p className="text-base leading-relaxed text-brand-dark sm:text-lg">
-            &ldquo;No siempre se tiene claro qué documentación se requiere o cuánto conviene solicitar&rdquo;
-            fue una de las conclusiones más repetidas por quienes ya intentaron acceder a financiamiento
-            bancario en los últimos dos años.
+        <div className="mt-7 border-l-[3px] border-accent bg-paper-alt px-5 py-4 sm:px-7">
+          <p className="font-serif text-base italic leading-snug text-ink sm:text-[17px]">
+            &ldquo;No siempre se tiene claro qué documentación se requiere o cuánto conviene
+            solicitar&rdquo;
+          </p>
+          <p className="mt-2 text-[13px] text-ink-faint">
+            Una de las conclusiones más repetidas por quienes ya intentaron acceder a
+            financiamiento bancario en los últimos dos años.
           </p>
         </div>
       </div>
