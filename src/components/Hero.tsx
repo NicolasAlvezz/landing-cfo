@@ -62,13 +62,12 @@ export default function Hero() {
         </div>
 
         <div
-          className="animate-fade-up mt-16 grid grid-cols-2 gap-px border border-[oklch(0.30_0.02_50)] bg-[oklch(0.30_0.02_50)] sm:grid-cols-4"
+          className="animate-fade-up mt-16 grid grid-cols-1 gap-px border border-[oklch(0.30_0.02_50)] bg-[oklch(0.30_0.02_50)] sm:grid-cols-3"
           style={{ animationDelay: "360ms" }}
         >
           {[
             { value: "Multisector", label: "tecnología, salud, industria, comercio y más" },
             { value: "1 a 50+", label: "empleados: el rango de tamaño de las PyMEs consultadas" },
-            { value: "USD 20–200", label: "rango de disposición a pagar por mes" },
             { value: "Semanal", label: "la frecuencia de actualización más pedida" },
           ].map((stat) => (
             <div key={stat.label} className="bg-ink px-5 py-[22px]">

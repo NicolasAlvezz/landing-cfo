@@ -35,7 +35,7 @@ export default function Validation() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-3">
           <div className="bg-white p-8">
             <h3 className="text-[13px] font-semibold uppercase tracking-[0.06em] text-ink-faint">
               Quiénes participaron
@@ -84,16 +84,6 @@ export default function Validation() {
             <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">
               (4 o 5 sobre 5) al preguntarle qué tan útil sería una herramienta así para su
               empresa.
-            </p>
-          </div>
-
-          <div className="bg-white p-8">
-            <h3 className="text-[13px] font-semibold uppercase tracking-[0.06em] text-ink-faint">
-              Disposición a pagar
-            </h3>
-            <p className="mt-3.5 font-serif text-[32px] font-semibold text-ink">USD 20–200</p>
-            <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">
-              por mes, según el tamaño de la empresa y las funcionalidades incluidas.
             </p>
           </div>
         </div>
