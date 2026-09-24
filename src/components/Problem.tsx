@@ -1,6 +1,8 @@
 "use client";
 
 import { useLanguage } from "@/lib/language-context";
+import SectionEyebrow from "@/components/SectionEyebrow";
+import Reveal from "@/components/Reveal";
 
 export default function Problem() {
   const { t } = useLanguage();
@@ -8,19 +10,17 @@ export default function Problem() {
   return (
     <section id="problema" className="bg-paper py-16 sm:py-[72px]">
       <div className="container-page">
-        <div className="max-w-[640px]">
-          <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-dark">
-            {t.problem.eyebrow}
-          </span>
+        <Reveal className="max-w-[640px]">
+          <SectionEyebrow index="01">{t.problem.eyebrow}</SectionEyebrow>
           <h2 className="mt-3.5 font-heading text-3xl font-bold leading-[1.15] tracking-[-0.01em] text-ink sm:text-4xl">
             {t.problem.h2}
           </h2>
           <p className="mt-3.5 text-base leading-relaxed text-ink-soft sm:text-[16.5px]">
             {t.problem.p}
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-9 overflow-hidden border border-line">
+        <Reveal delay={120} className="mt-9 overflow-hidden border border-line">
           <div className="grid grid-cols-2">
             <div className="border-r border-line bg-paper-alt px-4 py-3.5 sm:px-6">
               <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ink-faint sm:text-xs">
@@ -41,14 +41,14 @@ export default function Problem() {
               <div className="px-4 py-4 text-sm text-ink sm:px-6 sm:text-[14.5px]">{row.after}</div>
             </div>
           ))}
-        </div>
+        </Reveal>
 
-        <div className="mt-7 border-l-[3px] border-accent bg-paper-alt px-5 py-4 sm:px-7">
+        <Reveal delay={200} className="mt-7 border-l-[3px] border-accent bg-paper-alt px-5 py-4 sm:px-7">
           <p className="font-accent-italic text-base leading-snug text-ink sm:text-[17px]">
             {t.problem.quote}
           </p>
           <p className="mt-2 text-[13px] text-ink-faint">{t.problem.quoteAttribution}</p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

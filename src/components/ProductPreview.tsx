@@ -1,9 +1,55 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import type { Translations } from "@/lib/translations";
 import { FinoraMark } from "@/components/FinoraMark";
+import { useInView } from "@/lib/useInView";
+import CountUp from "@/components/CountUp";
+import Reveal from "@/components/Reveal";
 
 type Preview = Translations["hero"]["preview"];
 
 export default function ProductPreview({ data }: { data: Preview }) {
+  const { ref: chartRef, inView } = useInView<HTMLDivElement>({ threshold: 0.5 });
+  const realRef = useRef<SVGPolylineElement>(null);
+  const projRef = useRef<SVGPolylineElement>(null);
+  const bandRef = useRef<SVGPolygonElement>(null);
+  const markerRef = useRef<SVGCircleElement>(null);
+
+  useEffect(() => {
+    if (!inView) return;
+
+    [realRef, projRef].forEach((lineRef, i) => {
+      const el = lineRef.current;
+      if (!el) return;
+      const length = el.getTotalLength();
+      el.style.strokeDasharray = `${length}`;
+      el.style.strokeDashoffset = `${length}`;
+      el.getBoundingClientRect();
+      el.style.transition = `stroke-dashoffset 1000ms ease-out ${i * 300 + 100}ms`;
+      requestAnimationFrame(() => {
+        el.style.strokeDashoffset = "0";
+      });
+    });
+
+    if (bandRef.current) {
+      bandRef.current.style.transition = "opacity 800ms ease-out 650ms";
+      requestAnimationFrame(() => {
+        bandRef.current!.style.opacity = "0.55";
+      });
+    }
+
+    if (markerRef.current) {
+      markerRef.current.style.transformOrigin = "230px 118px";
+      markerRef.current.style.transition =
+        "transform 480ms cubic-bezier(0.34,1.56,0.64,1) 1150ms, opacity 300ms ease-out 1150ms";
+      requestAnimationFrame(() => {
+        markerRef.current!.style.opacity = "1";
+        markerRef.current!.style.transform = "scale(1)";
+      });
+    }
+  }, [inView]);
+
   return (
     <div>
       <div className="overflow-hidden rounded-[10px] border border-line-dark bg-marine shadow-[0_30px_60px_-30px_rgba(7,19,47,0.6)]">
@@ -35,7 +81,7 @@ export default function ProductPreview({ data }: { data: Preview }) {
 
         <div className="p-4 sm:p-5">
           <div className="flex items-start gap-2.5 rounded-[4px] border border-accent/35 bg-ink/60 px-4 py-3.5">
-            <span className="mt-[5px] h-[7px] w-[7px] shrink-0 rounded-full bg-danger" />
+            <span className="relative mt-[5px] h-[7px] w-[7px] shrink-0 rounded-full bg-danger text-danger pulse-dot" />
             <div>
               <div className="font-mono text-[10.5px] font-medium uppercase tracking-[0.09em] text-accent">
                 {data.alertLabel}
@@ -51,17 +97,19 @@ export default function ProductPreview({ data }: { data: Preview }) {
           </div>
 
           <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-            {data.kpis.map((kpi) => (
-              <div key={kpi.label} className="rounded-[4px] border border-line-dark bg-ink/50 px-3 py-2.5">
-                <div className="font-heading text-[15px] font-bold text-bone sm:text-[16px]">
-                  {kpi.value}
+            {data.kpis.map((kpi, i) => (
+              <Reveal key={kpi.label} delay={i * 90} direction="up">
+                <div className="rounded-[4px] border border-line-dark bg-ink/50 px-3 py-2.5">
+                  <div className="font-heading text-[15px] font-bold text-bone sm:text-[16px]">
+                    <CountUp value={kpi.value} />
+                  </div>
+                  <div className="mt-0.5 text-[10.5px] leading-tight text-fog">{kpi.label}</div>
                 </div>
-                <div className="mt-0.5 text-[10.5px] leading-tight text-fog">{kpi.label}</div>
-              </div>
+              </Reveal>
             ))}
           </div>
 
-          <div className="mt-3 rounded-[4px] border border-line-dark bg-ink/50 p-4">
+          <div ref={chartRef} className="mt-3 rounded-[4px] border border-line-dark bg-ink/50 p-4">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <span className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-fog">
                 {data.chartLabel}
@@ -81,11 +129,13 @@ export default function ProductPreview({ data }: { data: Preview }) {
 
             <svg viewBox="0 0 400 140" className="mt-3 w-full" preserveAspectRatio="none">
               <polygon
+                ref={bandRef}
                 points="150,70 190,88 230,118 270,102 310,80 350,66 350,140 150,140"
                 fill="var(--color-line-dark)"
-                opacity="0.55"
+                opacity="0"
               />
               <polyline
+                ref={realRef}
                 points="10,44 50,50 90,46 130,58 150,70"
                 fill="none"
                 stroke="var(--color-signal)"
@@ -95,6 +145,7 @@ export default function ProductPreview({ data }: { data: Preview }) {
               />
               <circle cx="150" cy="70" r="3.5" fill="var(--color-signal)" />
               <polyline
+                ref={projRef}
                 points="150,70 190,88 230,118 270,102 310,80 350,66"
                 fill="none"
                 stroke="var(--color-accent)"
@@ -104,7 +155,15 @@ export default function ProductPreview({ data }: { data: Preview }) {
                 strokeLinejoin="round"
               />
               <line x1="0" y1="118" x2="400" y2="118" stroke="var(--color-line-dark)" strokeWidth="1" />
-              <circle cx="230" cy="118" r="3.5" fill="var(--color-danger)" />
+              <circle
+                ref={markerRef}
+                cx="230"
+                cy="118"
+                r="3.5"
+                fill="var(--color-danger)"
+                opacity="0"
+                style={{ transform: "scale(0)" }}
+              />
               <text x="238" y="122" fill="var(--color-danger)" fontSize="10" fontFamily="var(--font-mono)">
                 {data.chartMarker}
               </text>

@@ -18,8 +18,9 @@ export default function Header() {
 
         <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-ink-soft">
           {t.header.nav.map((link) => (
-            <a key={link.href} href={link.href} className="transition-colors hover:text-ink">
+            <a key={link.href} href={link.href} className="group relative py-1 transition-colors hover:text-ink">
               {link.label}
+              <span className="absolute -bottom-[1px] left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100" />
             </a>
           ))}
         </nav>
@@ -35,7 +36,7 @@ export default function Header() {
           </button>
           <a
             href="#demo"
-            className="inline-flex items-center justify-center rounded-[3px] bg-accent px-[22px] py-[11px] text-sm font-semibold text-bone transition-opacity hover:opacity-90"
+            className="inline-flex items-center justify-center rounded-[3px] bg-accent px-[22px] py-[11px] text-sm font-semibold text-bone transition-transform duration-200 hover:-translate-y-0.5"
           >
             {t.header.cta}
           </a>

@@ -3,6 +3,10 @@
 import { useState, type FormEvent } from "react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
+import SectionEyebrow from "@/components/SectionEyebrow";
+import Reveal from "@/components/Reveal";
+import Spotlight from "@/components/Spotlight";
+import { FinoraMark } from "@/components/FinoraMark";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -54,12 +58,12 @@ export default function DemoForm() {
 
   return (
     <section id="demo" className="bg-ink py-[76px] sm:py-[76px]">
-      <div className="container-page">
+      <Spotlight color="rgba(192,132,58,0.13)" className="container-page">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-          <div>
-            <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent">
+          <Reveal direction="right">
+            <SectionEyebrow index="09" tone="dark">
               {t.demoForm.eyebrow}
-            </span>
+            </SectionEyebrow>
             <h2 className="mt-4 font-heading text-[26px] font-bold leading-tight tracking-[-0.01em] text-bone sm:text-4xl">
               {t.demoForm.h2}
             </h2>
@@ -70,17 +74,7 @@ export default function DemoForm() {
             <ul className="mt-[30px] flex flex-col gap-3.5">
               {t.demoForm.bullets.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-fog">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--color-accent)"
-                    strokeWidth="2.6"
-                    className="mt-0.5 shrink-0"
-                  >
-                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  <FinoraMark size={14} color="var(--color-accent)" className="mt-0.5 shrink-0" />
                   {item}
                 </li>
               ))}
@@ -95,9 +89,9 @@ export default function DemoForm() {
                 {t.demoForm.contactLink}
               </a>
             </p>
-          </div>
+          </Reveal>
 
-          <div className="rounded-[3px] bg-white p-7 text-ink sm:p-9">
+          <Reveal delay={140} direction="left" className="rounded-[3px] bg-white p-7 text-ink sm:p-9">
             {status === "success" ? (
               <div className="flex flex-col items-center justify-center py-10 text-center">
                 <span className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-accent-dark">
@@ -182,7 +176,7 @@ export default function DemoForm() {
                 </label>
 
                 {status === "error" && (
-                  <p className="rounded-[2px] bg-red-50 px-3.5 py-2.5 text-sm text-red-700">{errorMsg}</p>
+                  <p className="rounded-[2px] bg-danger-soft px-3.5 py-2.5 text-sm text-danger">{errorMsg}</p>
                 )}
 
                 <button
@@ -195,9 +189,9 @@ export default function DemoForm() {
                 <p className="text-center text-xs leading-relaxed text-ink-faint">{t.demoForm.consent}</p>
               </form>
             )}
-          </div>
+          </Reveal>
         </div>
-      </div>
+      </Spotlight>
     </section>
   );
 }
