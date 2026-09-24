@@ -57,19 +57,19 @@ export default function DemoForm() {
       <div className="container-page">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div>
-            <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-[oklch(0.78_0.09_50)]">
+            <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent">
               {t.demoForm.eyebrow}
             </span>
-            <h2 className="mt-4 font-serif text-[26px] font-semibold leading-tight text-white sm:text-4xl">
+            <h2 className="mt-4 font-heading text-[26px] font-bold leading-tight tracking-[-0.01em] text-bone sm:text-4xl">
               {t.demoForm.h2}
             </h2>
-            <p className="mt-4.5 max-w-[400px] text-base leading-relaxed text-[oklch(0.65_0.015_55)]">
+            <p className="mt-4.5 max-w-[400px] text-base leading-relaxed text-fog">
               {t.demoForm.p}
             </p>
 
             <ul className="mt-[30px] flex flex-col gap-3.5">
               {t.demoForm.bullets.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-[oklch(0.72_0.015_55)]">
+                <li key={item} className="flex items-start gap-3 text-sm text-fog">
                   <svg
                     width="16"
                     height="16"
@@ -86,11 +86,11 @@ export default function DemoForm() {
               ))}
             </ul>
 
-            <p className="mt-8 text-[13.5px] text-[oklch(0.55_0.015_55)]">
+            <p className="mt-8 text-[13.5px] text-ink-faint">
               {t.demoForm.contactPrefix}{" "}
               <a
                 href={`mailto:${CONTACT_EMAILS.join(",")}`}
-                className="font-semibold text-white underline underline-offset-4"
+                className="font-semibold text-bone underline underline-offset-4"
               >
                 {t.demoForm.contactLink}
               </a>
@@ -105,7 +105,7 @@ export default function DemoForm() {
                     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
-                <h3 className="mt-5 font-serif text-lg font-semibold text-ink">
+                <h3 className="mt-5 font-heading text-lg font-bold text-ink">
                   {t.demoForm.success.title}
                 </h3>
                 <p className="mt-2 text-sm text-ink-soft">{t.demoForm.success.p}</p>

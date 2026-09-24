@@ -14,7 +14,7 @@ export default function FAQ() {
           <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-dark">
             {t.faq.eyebrow}
           </span>
-          <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink sm:text-4xl">
+          <h2 className="mt-4 font-heading text-3xl font-bold leading-[1.15] tracking-[-0.01em] text-ink sm:text-4xl">
             {t.faq.h2}
           </h2>
         </div>
@@ -30,7 +30,7 @@ export default function FAQ() {
                   className="flex w-full items-center justify-between gap-4 py-7 text-left"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-serif text-base font-semibold text-ink sm:text-[17px]">
+                  <span className="font-heading text-base font-semibold text-ink sm:text-[17px]">
                     {item.q}
                   </span>
                   <svg

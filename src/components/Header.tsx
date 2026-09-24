@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/language-context";
+import { FinoraLogo } from "@/components/FinoraMark";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -11,11 +12,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur-md">
       <div className="container-page flex h-[76px] items-center justify-between">
-        <Link
-          href="#top"
-          className="flex items-baseline gap-0.5 font-serif text-[22px] font-semibold text-ink"
-        >
-          Fin<span className="italic text-accent">ora</span>
+        <Link href="#top" aria-label="Finora">
+          <FinoraLogo markSize={19} textClassName="text-ink" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-ink-soft">
@@ -30,14 +28,14 @@ export default function Header() {
           <button
             type="button"
             onClick={toggleLocale}
-            className="inline-flex items-center justify-center rounded-[3px] border border-line px-3 py-[9px] text-xs font-semibold uppercase tracking-[0.06em] text-ink-soft transition-colors hover:border-ink hover:text-ink"
+            className="inline-flex items-center justify-center rounded-[3px] border border-line px-3 py-[9px] font-mono text-xs font-medium uppercase tracking-[0.06em] text-ink-soft transition-colors hover:border-ink hover:text-ink"
             aria-label="Switch language / Cambiar idioma"
           >
             {locale === "es" ? "EN" : "ES"}
           </button>
           <a
             href="#demo"
-            className="inline-flex items-center justify-center rounded-[3px] bg-accent px-[22px] py-[11px] text-sm font-semibold text-white transition-opacity hover:opacity-90"
+            className="inline-flex items-center justify-center rounded-[3px] bg-accent px-[22px] py-[11px] text-sm font-semibold text-bone transition-opacity hover:opacity-90"
           >
             {t.header.cta}
           </a>
@@ -47,7 +45,7 @@ export default function Header() {
           <button
             type="button"
             onClick={toggleLocale}
-            className="inline-flex h-10 items-center justify-center rounded-[3px] border border-line px-3 text-xs font-semibold uppercase tracking-[0.06em] text-ink-soft"
+            className="inline-flex h-10 items-center justify-center rounded-[3px] border border-line px-3 font-mono text-xs font-medium uppercase tracking-[0.06em] text-ink-soft"
             aria-label="Switch language / Cambiar idioma"
           >
             {locale === "es" ? "EN" : "ES"}
@@ -88,7 +86,7 @@ export default function Header() {
             <a
               href="#demo"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-[3px] bg-accent px-5 py-2.5 text-sm font-semibold text-white"
+              className="mt-2 inline-flex items-center justify-center rounded-[3px] bg-accent px-5 py-2.5 text-sm font-semibold text-bone"
             >
               {t.header.cta}
             </a>

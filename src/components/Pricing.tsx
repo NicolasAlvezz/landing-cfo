@@ -14,7 +14,7 @@ export default function Pricing() {
           <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-dark">
             {t.pricing.eyebrow}
           </span>
-          <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink sm:text-4xl">
+          <h2 className="mt-4 font-heading text-3xl font-bold leading-[1.15] tracking-[-0.01em] text-ink sm:text-4xl">
             {t.pricing.h2}
           </h2>
           <p className="mt-4.5 text-base leading-relaxed text-ink-soft sm:text-[16.5px]">
@@ -29,26 +29,22 @@ export default function Pricing() {
               <div
                 key={plan.name}
                 className={`relative flex flex-col rounded-[3px] border p-[26px] ${
-                  highlighted ? "border-ink bg-ink" : "border-line bg-white"
+                  highlighted ? "border-line-dark bg-ink" : "border-line bg-white"
                 }`}
               >
                 {highlighted && (
-                  <span className="absolute -top-[13px] left-[30px] rounded-full bg-accent px-3 py-[5px] text-[11.5px] font-semibold text-white">
+                  <span className="absolute -top-[13px] left-[30px] rounded-full bg-accent px-3 py-[5px] text-[11.5px] font-semibold text-ink">
                     {t.pricing.mostChosen}
                   </span>
                 )}
-                <h3 className={`text-[17px] font-semibold ${highlighted ? "text-white" : "text-ink"}`}>
+                <h3 className={`font-heading text-[17px] font-bold tracking-[-0.01em] ${highlighted ? "text-bone" : "text-ink"}`}>
                   {plan.name}
                 </h3>
-                <p
-                  className={`mt-1 text-[12.5px] ${highlighted ? "text-[oklch(0.6_0.015_55)]" : "text-ink-faint"}`}
-                >
+                <p className={`mt-1 text-[12.5px] ${highlighted ? "text-fog" : "text-ink-faint"}`}>
                   {plan.audience}
                 </p>
 
-                <hr
-                  className={`my-[22px] h-px border-0 ${highlighted ? "bg-[oklch(0.3_0.02_50)]" : "bg-line"}`}
-                />
+                <hr className={`my-[22px] h-px border-0 ${highlighted ? "bg-line-dark" : "bg-line"}`} />
 
                 <ul className="flex flex-1 flex-col gap-3">
                   {plan.features.map((f) => (
@@ -64,9 +60,7 @@ export default function Pricing() {
                       >
                         <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
-                      <span className={highlighted ? "text-[oklch(0.75_0.015_55)]" : "text-ink-soft"}>
-                        {f}
-                      </span>
+                      <span className={highlighted ? "text-fog" : "text-ink-soft"}>{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -74,7 +68,7 @@ export default function Pricing() {
                 <a
                   href="#demo"
                   className={`mt-[26px] inline-flex w-full items-center justify-center rounded-[3px] px-5 py-[13px] text-[14.5px] font-semibold transition-opacity hover:opacity-90 ${
-                    highlighted ? "bg-accent text-white" : "border border-line text-ink"
+                    highlighted ? "bg-accent text-ink" : "border border-line text-ink"
                   }`}
                 >
                   {t.pricing.cta}

@@ -1,33 +1,60 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: oklch(0.975 0.008 80);
-  --color-paper-alt: oklch(0.945 0.014 72);
+  /* Claro: fondo de documentos, informes y secciones sobre blanco. */
+  --color-paper: #f5f7fb;
+  --color-paper-alt: #eaeff8;
+  /* Hueso: blanco frío, nunca #FFFFFF puro. Texto principal sobre noche; superficie de tarjetas sobre claro. */
+  --color-white: #eef2f9;
 
-  --color-ink: oklch(0.19 0.016 50);
-  --color-ink-soft: oklch(0.42 0.028 55);
-  --color-ink-faint: oklch(0.58 0.02 55);
+  /* Noche: el color de la marca. Fondo de pantallas oscuras y texto principal sobre claro. */
+  --color-ink: #07132f;
+  /* Pizarra: texto secundario sobre claro. */
+  --color-ink-soft: #5a6685;
+  /* Niebla, aclarada para uso como texto terciario sobre fondos claros. */
+  --color-ink-faint: #8b96b3;
 
-  --color-line: oklch(0.84 0.015 65);
-  --color-line-soft: oklch(0.90 0.012 68);
+  /* Marino: tarjetas y bloques levantados sobre la noche. */
+  --color-marine: #0c2150;
+  /* Línea: bordes, divisores y grilla de gráficos sobre fondos oscuros. */
+  --color-line-dark: #1f3361;
+  /* Niebla: texto secundario, etiquetas y ejes sobre la noche. */
+  --color-fog: #93a1c2;
+  /* Hueso, como token de texto sobre fondos oscuros. */
+  --color-bone: #eef2f9;
 
-  --color-accent: oklch(0.58 0.15 45);
-  --color-accent-dark: oklch(0.42 0.135 40);
-  --color-accent-soft: oklch(0.93 0.035 50);
+  /* Bordes sobre fondos claros, derivados de Niebla. */
+  --color-line: #dbe1ee;
+  --color-line-soft: #e7ebf3;
 
-  --color-forest: oklch(0.50 0.10 152);
-  --color-forest-soft: oklch(0.92 0.03 152);
+  /* Ámbar tostado: la chispa del logo, el botón principal, lo proyectado y las alertas. Un solo trabajo: marcar lo que pide atención. */
+  --color-accent: #c0843a;
+  /* Ámbar hondo: el ámbar cuando tiene que ser texto sobre claro. */
+  --color-accent-dark: #8a5a1e;
+  --color-accent-soft: #f2e3c9;
 
-  --color-white: oklch(0.99 0 0);
+  /* Verde saldo: solo estado positivo / validado. No decora. */
+  --color-forest: #34c28a;
+  --color-forest-soft: #d9f3e8;
 
-  /* Editorial serif for headings; system fallback stands in for
-     Source Serif 4, which this build environment cannot fetch from
-     Google Fonts at build time. */
-  --font-serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
-  /* Grotesk-style sans for body/UI; system fallback stands in for
-     Space Grotesk for the same reason. */
-  --font-sans: -apple-system, "Segoe UI", ui-sans-serif, system-ui, Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  /* Azul señal: datos reales en gráficos, links y foco. */
+  --color-signal: #5b8def;
+
+  /* Rojo quiebre: saldo negativo y errores. No decora nada. */
+  --color-danger: #f0605d;
+  --color-danger-soft: #fbdedd;
+
+  /* Sora — Ancla: títulos y números grandes. */
+  --font-heading: "Sora", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  /* Figtree — Texto: todo el texto corrido y la interfaz. */
+  --font-sans: "Figtree", -apple-system, "Segoe UI", ui-sans-serif, system-ui,
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-sans);
+  /* IBM Plex Mono — Datos: montos, fechas, códigos, cifras tabulares. */
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas,
+    monospace;
+  /* Newsreader — Acento: solo cursiva, nunca negrita. El momento de una frase. */
+  --font-accent: "Newsreader", Georgia, "Iowan Old Style", serif;
 }
 
 html {
@@ -42,7 +69,7 @@ body {
 
 ::selection {
   background: var(--color-accent);
-  color: var(--color-white);
+  color: var(--color-bone);
 }
 
 .container-page {
@@ -53,6 +80,12 @@ body {
 
 .text-balance {
   text-wrap: balance;
+}
+
+.font-accent-italic {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
 }
 
 @keyframes fade-up {

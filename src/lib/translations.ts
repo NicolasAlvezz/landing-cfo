@@ -6,6 +6,7 @@ export const translations = {
       nav: [
         { href: "#problema", label: "El problema" },
         { href: "#producto", label: "Producto" },
+        { href: "#voz", label: "Cómo habla" },
         { href: "#como-funciona", label: "Cómo funciona" },
         { href: "#validacion", label: "Validación" },
         { href: "#precios", label: "Precios" },
@@ -15,17 +16,44 @@ export const translations = {
       openMenu: "Abrir menú",
     },
     hero: {
-      badge: "Validado con dueños, gerentes y contadores de empresas uruguayas",
-      h1: "El CFO con inteligencia artificial que le faltaba a tu empresa",
-      p: "Finora apoya a tu equipo de finanzas a anticipar problemas de caja, entender la rentabilidad del negocio y tomar mejores decisiones — con recomendaciones explicables, sin reemplazar el criterio de tu contador.",
+      badge: "Asistente financiero con IA para pymes uruguayas",
+      h1: { line1: "Tu caja,", highlight: "90 días", line2: "adelante." },
+      p: "Finora se conecta a tu Odoo o a tu planilla, proyecta la caja a 30, 60 y 90 días y te avisa antes de que falte plata. Cada número muestra de dónde sale, y tu contador lo valida antes de que lo uses para decidir.",
       ctaPrimary: "Agendar una demo",
-      ctaSecondary: "Ver qué encontramos en la validación",
+      ctaSecondary: "Ver una alerta real",
       integrations: "Se integra con Odoo, Excel/Google Sheets y otros sistemas contables que ya usás.",
       stats: [
-        { value: "Multisector", label: "tecnología, salud, industria, comercio y más" },
+        { value: "Multisector", label: "tecnología, salud, industria, comercio y más ya lo validaron" },
         { value: "1 a 50+", label: "empleados: el rango de tamaño de las empresas consultadas" },
         { value: "Semanal", label: "la frecuencia de actualización más pedida" },
       ],
+      preview: {
+        tabs: ["Caja", "Resultados", "Cobranzas", "Informe mensual"],
+        ctaButton: "Enviar al contador",
+        alertLabel: "Alerta de caja · Proyección a 90 días",
+        alertPrefix: "Si no cobrás la factura 1043, el",
+        alertDate: "10 de noviembre",
+        alertMiddle: "la caja queda en",
+        alertAmount: "$U −182.000",
+        alertEnd: ".",
+        kpis: [
+          { value: "$U 470.000", label: "Saldo hoy" },
+          { value: "38 días", label: "Promedio de cobro" },
+          { value: "31,4 %", label: "Margen bruto del mes" },
+          { value: "3", label: "Vencimientos DGI/BPS en 30 días" },
+        ],
+        chartLabel: "Saldo de caja · miles de $U",
+        legend: { real: "Real", projected: "Proyectado", confidence: "Rango de confianza" },
+        xLabels: ["25/8", "Hoy", "20/10", "10/11", "24/11", "22/12"],
+        chartMarker: "−182",
+        tags: [
+          "Datos: Odoo · 1.284 movimientos",
+          "Supuesto: cobros a 38 días",
+          "Confianza: media",
+        ],
+        pendingBadge: "Pendiente de validación · Contador",
+        caption: "Así se ve en tu panel. Cifras de ejemplo.",
+      },
     },
     problem: {
       eyebrow: "Lo que encontramos al validar la idea",
@@ -36,23 +64,23 @@ export const translations = {
       rows: [
         {
           before: "No sabés cuánta caja vas a tener la semana que viene",
-          after: "Proyección de flujo de caja semana a semana",
+          after: "Proyección de caja a 30, 60 y 90 días, actualizada sola",
         },
         {
           before: "Te enterás de un faltante de dinero cuando ya es tarde",
-          after: "Alertas tempranas ante posibles faltantes",
+          after: "Alerta con la fecha exacta y el monto, semanas antes",
         },
         {
           before: "La info está repartida entre Odoo, planillas y mails",
-          after: "Todo integrado con el sistema que ya usás",
+          after: "Todo conectado con el sistema que ya usás, sin duplicar carga",
         },
         {
           before: "Una sola persona interpreta todo, sin tiempo ni respaldo",
-          after: "Recomendaciones explicables, revisables por tu contador",
+          after: "Recomendaciones en criollo, con un botón para tu contador",
         },
         {
           before: "Pedir financiamiento implica juntar documentación a ciegas",
-          after: "Información clara y ordenada, lista para presentar",
+          after: "Informe mensual claro y ordenado, listo para presentar",
         },
       ],
       quote:
@@ -60,20 +88,51 @@ export const translations = {
       quoteAttribution:
         "Una de las conclusiones más repetidas por quienes ya intentaron acceder a financiamiento bancario en los últimos dos años.",
     },
+    voice: {
+      eyebrow: "Cómo habla Finora",
+      h2: "Nada de “score de confianza del modelo”. Fecha y monto, como los pensás vos.",
+      p: "La encuesta a pymes fue clara sobre qué frena la adopción de este tipo de herramientas: miedo por la seguridad, dudas sobre la exactitud y no entender cómo el sistema llega a sus conclusiones. Por eso Finora habla en criollo, siempre con fecha y monto, y siempre muestra de dónde sale cada número.",
+      momentPre: "Vendiste lo mismo que el mes pasado, pero cobraste",
+      momentItalic: "doce días más tarde",
+      momentPost: ".",
+      momentCaption: "Así arranca el informe mensual que Finora te arma solo — y que tu contador aprueba antes de que lo veas.",
+      colWeSay: "Decimos",
+      colNoSay: "No decimos",
+      pairs: [
+        {
+          weSay: "Si no cobrás la factura 1043, el 10 de noviembre te quedás sin caja.",
+          noSay: "Riesgo de liquidez negativa detectado en el período t+49.",
+        },
+        {
+          weSay: "Este mes gastaste 30 % más en insumos que el promedio.",
+          noSay: "Variación intermensual rubro 5.1.02: +30,2 %.",
+        },
+        {
+          weSay: "Confianza media: faltan los movimientos bancarios de agosto.",
+          noSay: "Score de confianza del modelo: 0,64.",
+        },
+        {
+          weSay: "Pendiente de revisión de tu contador.",
+          noSay: "Informe generado automáticamente por IA.",
+        },
+      ],
+      footer:
+        "Y cuando decimos que un informe está validado es porque lo aprobó una persona. Finora nunca lo dice si no lo hizo tu contador.",
+    },
     solution: {
       eyebrow: "La solución",
-      h2: "Un CFO con IA, siempre disponible para tu equipo",
-      p: "Finora toma la información financiera que ya generás y la convierte en proyecciones, alertas y recomendaciones claras. Priorizamos las funciones que las empresas consultadas pidieron con más frecuencia.",
+      h2: "Un asistente financiero con IA, siempre disponible para tu equipo",
+      p: "Finora toma la información que ya generás en Odoo o en tu planilla y la convierte en proyecciones, alertas y recomendaciones claras. Priorizamos las funciones que las empresas consultadas pidieron con más frecuencia.",
       heroCard: {
         badge: "La más pedida",
-        title: "Proyección de flujo de caja",
-        desc: "Visualizá cuánta caja vas a tener en las próximas semanas y meses, antes de que el problema aparezca.",
+        title: "Proyección de caja a 30, 60 y 90 días",
+        desc: "Mirá cuánta caja vas a tener antes de que falte, con el mismo horizonte que usa tu contador para planificar.",
       },
       topFeatures: [
         {
           label: "Alertas",
-          title: "Alertas tempranas",
-          desc: "Avisos automáticos ante posibles faltantes de dinero, para actuar con tiempo y no cuando ya es tarde.",
+          title: "Alertas con fecha y monto",
+          desc: "Nada de “riesgo detectado en el período t+49”: te decimos qué factura, qué día y cuánta plata, para actuar a tiempo.",
         },
         {
           label: "Rentabilidad",
@@ -103,27 +162,31 @@ export const translations = {
           desc: "Visibilidad clara de qué vas a cobrar, qué tenés que pagar, y cuándo.",
         },
         {
-          label: "Integración",
-          title: "Integración con tu sistema contable",
-          desc: "Se conecta con Odoo, Excel/Google Sheets y otros sistemas que ya usás, sin duplicar trabajo.",
+          label: "Contador",
+          title: "Informe mensual con un botón para tu contador",
+          desc: "Enviás el informe a validar con un clic. Nada se marca como aprobado si tu contador no lo aprobó.",
         },
       ],
     },
     howItWorks: {
       eyebrow: "Cómo funciona",
-      h2: "De tus datos a una decisión, en tres pasos",
+      h2: "De tus datos a una decisión validada, en cuatro pasos",
       steps: [
         {
-          title: "Conectá tus datos",
+          title: "Conectá Odoo o tu planilla",
           desc: "Vinculá tu sistema contable (Odoo, Excel/Google Sheets u otro) o cargá la información manualmente. Vos elegís qué compartir.",
         },
         {
-          title: "La IA analiza y proyecta",
-          desc: "Finora procesa tu información e identifica tendencias, riesgos y oportunidades, con la frecuencia de actualización que necesites.",
+          title: "Finora proyecta tu caja",
+          desc: "Procesa tu información y arma la proyección a 30, 60 y 90 días, con la frecuencia de actualización que necesites.",
         },
         {
-          title: "Recibís recomendaciones claras",
-          desc: "Cada conclusión muestra los datos que la respaldan y puede ser revisada por tu contador o asesor antes de decidir.",
+          title: "Tu contador valida el informe",
+          desc: "Cada conclusión muestra los datos y el supuesto que la respaldan. Tu contador la revisa con un clic antes de que llegue a vos.",
+        },
+        {
+          title: "Decidís con fecha y monto",
+          desc: "Nada de intuición: sabés exactamente qué factura, qué día y cuánta plata está en juego.",
         },
       ],
     },
@@ -141,13 +204,13 @@ export const translations = {
         {
           concern: "Exactitud de los resultados",
           answer:
-            "Cada conclusión muestra los datos que la respaldan y el cálculo puede ser revisado y auditado, no es una caja negra.",
+            "Cada conclusión muestra los datos que la respaldan, el supuesto que usó y su nivel de confianza. El cálculo puede revisarse y auditarse: no es una caja negra.",
           italic: false,
         },
         {
           concern: "“Que reemplace el criterio de mi contador”",
           answer:
-            "Una de las empresas consultadas lo dijo explícitamente, y coincidimos: Finora se posiciona como complemento, no reemplazo. Tu contador o asesor puede validar cada informe.",
+            "Una de las empresas consultadas lo dijo explícitamente, y coincidimos: Finora propone, tu contador valida. Nunca marcamos un informe como aprobado si no lo aprobó una persona.",
           italic: true,
         },
         {
@@ -199,8 +262,8 @@ export const translations = {
           name: "Starter",
           audience: "Emprendimientos y equipos de 1 a 10 personas",
           features: [
-            "Proyección de flujo de caja",
-            "Alertas tempranas",
+            "Proyección de caja a 30 y 60 días",
+            "Alertas con fecha y monto",
             "Informe ejecutivo mensual",
             "1 sistema conectado",
           ],
@@ -210,10 +273,10 @@ export const translations = {
           audience: "Empresas en crecimiento de 11 a 50 personas",
           features: [
             "Todo lo de Starter",
+            "Proyección a 90 días con rango de confianza",
             "Análisis de rentabilidad",
             "Simulación de escenarios",
-            "Comparación con períodos anteriores",
-            "Integración con tu sistema contable",
+            "Envío del informe a tu contador",
           ],
         },
         {
@@ -234,11 +297,15 @@ export const translations = {
       items: [
         {
           q: "¿Finora reemplaza a mi contador?",
-          a: "No. En nuestra validación, quienes ya trabajan con un contador fueron claros: la herramienta debe ser un complemento, no un reemplazo. Finora se encarga del análisis y la proyección; tu contador o asesor puede revisar y validar cada informe antes de que lo uses para decidir.",
+          a: "No. En nuestra validación, quienes ya trabajan con un contador fueron claros: la herramienta debe ser un complemento, no un reemplazo. Finora propone el análisis y la proyección; tu contador valida cada informe con un clic antes de que lo uses para decidir.",
         },
         {
           q: "¿Cómo protegen la seguridad de mis datos financieros?",
           a: "Fue la principal preocupación en la validación que hicimos, y la tomamos en serio: la información se transmite y almacena cifrada, con control de accesos, y vos decidís qué sistemas conectar y qué datos compartir.",
+        },
+        {
+          q: "¿Qué es el “nivel de confianza” que muestra cada informe?",
+          a: "Cada proyección se arma sobre un supuesto explícito (por ejemplo, “cobros a 38 días”) y muestra qué tan completa está la información detrás: si faltan movimientos bancarios o datos recientes, la confianza baja y te lo decimos, en vez de mostrar un número como si fuera certeza.",
         },
         {
           q: "¿Con qué sistemas se integra?",
@@ -249,10 +316,6 @@ export const translations = {
           a: "Sí. Muchas de las empresas que consultamos nos dijeron que antes de contratar preferirían una prueba gratuita o un piloto, así que eso es justamente lo que ofrecemos al agendar una demo.",
         },
         {
-          q: "¿Cómo sé que puedo confiar en las recomendaciones?",
-          a: "Cada conclusión muestra los datos que la respaldan y el cálculo puede revisarse y auditarse. No es una caja negra: podés ver de dónde sale cada número.",
-        },
-        {
           q: "¿Con qué frecuencia se actualiza el análisis?",
           a: "Vos elegís: la mayoría de las empresas que consultamos prefiere una actualización semanal, aunque también ofrecemos frecuencia mensual o en tiempo real si ya trabajás con un ERP conectado.",
         },
@@ -261,9 +324,9 @@ export const translations = {
     demoForm: {
       eyebrow: "Agendemos una demo",
       h2: "Contanos de tu empresa y te mostramos Finora en acción",
-      p: "En 20 minutos te mostramos cómo se vería tu flujo de caja proyectado, qué alertas tendrías hoy y cómo se integraría con tu sistema actual.",
+      p: "En 20 minutos te mostramos cómo se vería tu caja proyectada a 90 días, qué alertas tendrías hoy —con fecha y monto— y cómo se integraría con tu sistema actual.",
       bullets: [
-        "Demo personalizada con datos de ejemplo de tu sector",
+        "Demo con la proyección armada sobre datos de ejemplo de tu sector",
         "Sin costo ni compromiso",
         "Podés invitar a tu contador o socio",
       ],
@@ -314,6 +377,7 @@ export const translations = {
       nav: [
         { href: "#problema", label: "The problem" },
         { href: "#producto", label: "Product" },
+        { href: "#voz", label: "How it talks" },
         { href: "#como-funciona", label: "How it works" },
         { href: "#validacion", label: "Validation" },
         { href: "#precios", label: "Pricing" },
@@ -323,17 +387,44 @@ export const translations = {
       openMenu: "Open menu",
     },
     hero: {
-      badge: "Validated with owners, managers and accountants at Uruguayan companies",
-      h1: "The AI-powered CFO your company was missing",
-      p: "Finora helps your finance team anticipate cash-flow problems, understand the business's profitability, and make better decisions — with explainable recommendations, without replacing your accountant's judgment.",
+      badge: "AI-powered financial assistant for Uruguayan SMEs",
+      h1: { line1: "Your cash,", highlight: "90 days", line2: "ahead." },
+      p: "Finora connects to your Odoo or your spreadsheet, projects your cash flow 30, 60 and 90 days out, and warns you before you run out of money. Every number shows where it comes from, and your accountant validates it before you use it to decide.",
       ctaPrimary: "Book a demo",
-      ctaSecondary: "See what we found in our validation",
+      ctaSecondary: "See a real alert",
       integrations: "Integrates with Odoo, Excel/Google Sheets and other accounting systems you already use.",
       stats: [
-        { value: "Multi-industry", label: "technology, healthcare, manufacturing, retail and more" },
+        { value: "Multi-industry", label: "technology, healthcare, manufacturing, retail and more already validated it" },
         { value: "1 to 50+", label: "employees: the size range of the companies we surveyed" },
         { value: "Weekly", label: "the most-requested update frequency" },
       ],
+      preview: {
+        tabs: ["Cash", "P&L", "Collections", "Monthly report"],
+        ctaButton: "Send to accountant",
+        alertLabel: "Cash alert · 90-day projection",
+        alertPrefix: "If invoice 1043 isn't paid by",
+        alertDate: "November 10",
+        alertMiddle: "your cash balance drops to",
+        alertAmount: "US$ −45,500",
+        alertEnd: ".",
+        kpis: [
+          { value: "US$ 117,500", label: "Cash on hand today" },
+          { value: "38 days", label: "Average collection time" },
+          { value: "31.4 %", label: "Gross margin this month" },
+          { value: "3", label: "Tax filings due in 30 days" },
+        ],
+        chartLabel: "Cash balance · thousands US$",
+        legend: { real: "Actual", projected: "Projected", confidence: "Confidence range" },
+        xLabels: ["8/25", "Today", "10/20", "11/10", "11/24", "12/22"],
+        chartMarker: "−46",
+        tags: [
+          "Data: Odoo · 1,284 transactions",
+          "Assumption: 38-day collections",
+          "Confidence: medium",
+        ],
+        pendingBadge: "Pending validation · Accountant",
+        caption: "This is what your dashboard looks like. Sample figures.",
+      },
     },
     problem: {
       eyebrow: "What we found while validating the idea",
@@ -344,43 +435,74 @@ export const translations = {
       rows: [
         {
           before: "You don't know how much cash you'll have next week",
-          after: "Week-by-week cash-flow projection",
+          after: "30/60/90-day cash projection, updated on its own",
         },
         {
           before: "You find out about a cash shortfall when it's already too late",
-          after: "Early alerts for potential shortfalls",
+          after: "An alert with the exact date and amount, weeks ahead",
         },
         {
           before: "Info is scattered across Odoo, spreadsheets and emails",
-          after: "Everything integrated with the system you already use",
+          after: "Everything connected to the system you already use, no duplicate entry",
         },
         {
           before: "One person has to interpret everything, with no time or backup",
-          after: "Explainable recommendations your accountant can review",
+          after: "Plain-language recommendations, one click away from your accountant",
         },
         {
           before: "Applying for financing means gathering paperwork blind",
-          after: "Clear, organized information, ready to present",
+          after: "A clear, organized monthly report, ready to present",
         },
       ],
       quote: "“It's not always clear what documentation is required or how much you should ask for”",
       quoteAttribution:
         "One of the most repeated takeaways from people who've tried to access bank financing in the last two years.",
     },
+    voice: {
+      eyebrow: "How Finora talks",
+      h2: "No “model confidence score.” Just a date and an amount, the way you think about them.",
+      p: "Our SME survey was clear about what holds this kind of tool back: fear about security, doubts about accuracy, and not understanding how the system reaches its conclusions. So Finora speaks plainly, always with a date and an amount, and always shows where every number comes from.",
+      momentPre: "You sold the same as last month, but got paid",
+      momentItalic: "twelve days later",
+      momentPost: ".",
+      momentCaption: "That's how the monthly report Finora builds on its own opens — and your accountant approves it before you ever see it.",
+      colWeSay: "We say",
+      colNoSay: "We don't say",
+      pairs: [
+        {
+          weSay: "If invoice 1043 isn't paid, you run out of cash on November 10.",
+          noSay: "Negative liquidity risk detected in period t+49.",
+        },
+        {
+          weSay: "This month you spent 30% more on supplies than average.",
+          noSay: "Month-over-month variance, line item 5.1.02: +30.2%.",
+        },
+        {
+          weSay: "Medium confidence: August's bank transactions are missing.",
+          noSay: "Model confidence score: 0.64.",
+        },
+        {
+          weSay: "Pending your accountant's review.",
+          noSay: "Report auto-generated by AI.",
+        },
+      ],
+      footer:
+        "And when we say a report is validated, it's because a person approved it. Finora never says so unless your accountant did.",
+    },
     solution: {
       eyebrow: "The solution",
-      h2: "An AI CFO, always available to your team",
-      p: "Finora takes the financial information you already generate and turns it into clear projections, alerts and recommendations. We prioritized the features the companies we surveyed asked for most.",
+      h2: "An AI-powered financial assistant, always available to your team",
+      p: "Finora takes the information you already generate in Odoo or your spreadsheet and turns it into clear projections, alerts and recommendations. We prioritized the features the companies we surveyed asked for most.",
       heroCard: {
         badge: "Most requested",
-        title: "Cash-flow projection",
-        desc: "See how much cash you'll have over the coming weeks and months, before the problem shows up.",
+        title: "30/60/90-day cash projection",
+        desc: "See how much cash you'll have before it runs short, on the same horizon your accountant uses to plan.",
       },
       topFeatures: [
         {
           label: "Alerts",
-          title: "Early alerts",
-          desc: "Automatic warnings about potential cash shortfalls, so you can act in time instead of too late.",
+          title: "Alerts with a date and an amount",
+          desc: "No “risk detected in period t+49”: we tell you which invoice, which day, and how much money is on the line, so you can act in time.",
         },
         {
           label: "Profitability",
@@ -410,27 +532,31 @@ export const translations = {
           desc: "Clear visibility into what you're owed, what you owe, and when.",
         },
         {
-          label: "Integration",
-          title: "Integration with your accounting system",
-          desc: "Connects with Odoo, Excel/Google Sheets and other systems you already use, with no duplicate work.",
+          label: "Accountant",
+          title: "Monthly report, one click from your accountant",
+          desc: "Send the report for validation with one click. Nothing is marked approved unless your accountant approved it.",
         },
       ],
     },
     howItWorks: {
       eyebrow: "How it works",
-      h2: "From your data to a decision, in three steps",
+      h2: "From your data to a validated decision, in four steps",
       steps: [
         {
-          title: "Connect your data",
+          title: "Connect Odoo or your spreadsheet",
           desc: "Link your accounting system (Odoo, Excel/Google Sheets or another) or enter the information manually. You choose what to share.",
         },
         {
-          title: "The AI analyzes and projects",
-          desc: "Finora processes your information and identifies trends, risks and opportunities, at the update frequency you need.",
+          title: "Finora projects your cash",
+          desc: "It processes your information and builds the 30/60/90-day projection, at the update frequency you need.",
         },
         {
-          title: "You get clear recommendations",
-          desc: "Every conclusion shows the data behind it and can be reviewed by your accountant or advisor before you decide.",
+          title: "Your accountant validates the report",
+          desc: "Every conclusion shows the data and the assumption behind it. Your accountant reviews it with one click before it reaches you.",
+        },
+        {
+          title: "You decide with a date and an amount",
+          desc: "No guesswork: you know exactly which invoice, which day, and how much money is at stake.",
         },
       ],
     },
@@ -448,13 +574,13 @@ export const translations = {
         {
           concern: "Accuracy of the results",
           answer:
-            "Every conclusion shows the data behind it and the calculation can be reviewed and audited — it's not a black box.",
+            "Every conclusion shows the data behind it, the assumption it used and its confidence level. The calculation can be reviewed and audited — it's not a black box.",
           italic: false,
         },
         {
           concern: "“That it would replace my accountant's judgment”",
           answer:
-            "One of the companies we surveyed said this explicitly, and we agree: Finora positions itself as a complement, not a replacement. Your accountant or advisor can validate every report.",
+            "One of the companies we surveyed said this explicitly, and we agree: Finora proposes, your accountant validates. We never mark a report as approved unless a person approved it.",
           italic: true,
         },
         {
@@ -498,8 +624,8 @@ export const translations = {
           name: "Starter",
           audience: "Startups and teams of 1 to 10 people",
           features: [
-            "Cash-flow projection",
-            "Early alerts",
+            "30 and 60-day cash projection",
+            "Alerts with a date and an amount",
             "Monthly executive report",
             "1 connected system",
           ],
@@ -509,10 +635,10 @@ export const translations = {
           audience: "Growing companies of 11 to 50 people",
           features: [
             "Everything in Starter",
+            "90-day projection with confidence range",
             "Profitability analysis",
             "Scenario simulation",
-            "Comparison with prior periods",
-            "Integration with your accounting system",
+            "Report sent to your accountant",
           ],
         },
         {
@@ -533,11 +659,15 @@ export const translations = {
       items: [
         {
           q: "Does Finora replace my accountant?",
-          a: "No. In our validation, people who already work with an accountant were clear about this: the tool should be a complement, not a replacement. Finora handles the analysis and projections; your accountant or advisor can review and validate every report before you use it to decide.",
+          a: "No. In our validation, people who already work with an accountant were clear about this: the tool should be a complement, not a replacement. Finora proposes the analysis and projections; your accountant validates every report with one click before you use it to decide.",
         },
         {
           q: "How do you protect the security of my financial data?",
           a: "This was the top concern in our validation, and we take it seriously: information is transmitted and stored encrypted, with access controls, and you decide which systems to connect and what data to share.",
+        },
+        {
+          q: "What does the “confidence level” on each report mean?",
+          a: "Every projection is built on an explicit assumption (for example, “collections in 38 days”) and shows how complete the data behind it is: if recent bank transactions are missing, confidence drops and we tell you, instead of showing a number as if it were certainty.",
         },
         {
           q: "What systems does it integrate with?",
@@ -548,10 +678,6 @@ export const translations = {
           a: "Yes. Many of the companies we surveyed told us they'd prefer a free trial or a pilot before committing, so that's exactly what we offer when you book a demo.",
         },
         {
-          q: "How do I know I can trust the recommendations?",
-          a: "Every conclusion shows the data behind it, and the calculation can be reviewed and audited. It's not a black box — you can see where every number comes from.",
-        },
-        {
           q: "How often is the analysis updated?",
           a: "You choose: most of the companies we surveyed prefer a weekly update, though we also offer monthly or real-time frequency if you already work with a connected ERP.",
         },
@@ -560,9 +686,9 @@ export const translations = {
     demoForm: {
       eyebrow: "Let's book a demo",
       h2: "Tell us about your company and we'll show you Finora in action",
-      p: "In 20 minutes we'll show you what your projected cash flow would look like, what alerts you'd have today, and how it would integrate with your current system.",
+      p: "In 20 minutes we'll show you what your 90-day cash projection would look like, what alerts you'd have today — with a date and an amount — and how it would integrate with your current system.",
       bullets: [
-        "Personalized demo with sample data from your industry",
+        "A demo with the projection built on sample data from your industry",
         "No cost, no commitment",
         "You can invite your accountant or partner",
       ],

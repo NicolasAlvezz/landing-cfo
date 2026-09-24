@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
+import Voice from "@/components/Voice";
 import Solution from "@/components/Solution";
 import HowItWorks from "@/components/HowItWorks";
 import Trust from "@/components/Trust";
@@ -17,6 +18,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Problem />
+        <Voice />
         <Solution />
         <HowItWorks />
         <Trust />

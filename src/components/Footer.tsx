@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/lib/language-context";
+import { FinoraLogo } from "@/components/FinoraMark";
 
 const CONTACT_EMAILS = [
   "emivan12@gmail.com",
@@ -16,9 +17,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-line bg-paper">
       <div className="container-page flex flex-col items-center justify-between gap-5 py-11 sm:flex-row">
-        <div className="flex items-baseline gap-0.5 font-serif text-lg font-semibold text-ink">
-          Fin<span className="italic text-accent">ora</span>
-        </div>
+        <FinoraLogo markSize={16} textClassName="text-ink" className="text-base" />
 
         <p className="max-w-[420px] text-center text-[12.5px] text-ink-faint">{t.footer.tagline}</p>
 
@@ -29,7 +28,7 @@ export default function Footer() {
           {t.footer.contact}
         </a>
       </div>
-      <div className="border-t border-line py-5 text-center text-[11.5px] text-ink-faint">
+      <div className="border-t border-line py-5 text-center font-mono text-[11px] tracking-[0.02em] text-ink-faint">
         © {new Date().getFullYear()} Finora. {t.footer.copyright}
       </div>
     </footer>

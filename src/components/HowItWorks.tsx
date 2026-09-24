@@ -12,21 +12,20 @@ export default function HowItWorks() {
           <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-dark">
             {t.howItWorks.eyebrow}
           </span>
-          <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink sm:text-4xl">
+          <h2 className="mt-4 font-heading text-3xl font-bold leading-[1.15] tracking-[-0.01em] text-ink sm:text-4xl">
             {t.howItWorks.h2}
           </h2>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-12 sm:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {t.howItWorks.steps.map((step, i) => (
             <div key={step.title}>
               <div
-                className="font-serif text-[44px] font-semibold text-accent-soft"
-                style={{ WebkitTextStroke: "1.5px var(--color-accent)" }}
+                className="font-mono text-[15px] font-medium text-accent"
               >
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <hr className="mt-[18px] h-px border-0 bg-line" />
+              <hr className="mt-[14px] h-px border-0 bg-line" />
               <h3 className="mt-[18px] text-lg font-semibold text-ink">{step.title}</h3>
               <p className="mt-2.5 text-[14.5px] leading-relaxed text-ink-soft">{step.desc}</p>
             </div>

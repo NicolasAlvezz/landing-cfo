@@ -12,7 +12,7 @@ export default function Problem() {
           <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent-dark">
             {t.problem.eyebrow}
           </span>
-          <h2 className="mt-3.5 font-serif text-3xl font-semibold leading-[1.15] text-ink sm:text-4xl">
+          <h2 className="mt-3.5 font-heading text-3xl font-bold leading-[1.15] tracking-[-0.01em] text-ink sm:text-4xl">
             {t.problem.h2}
           </h2>
           <p className="mt-3.5 text-base leading-relaxed text-ink-soft sm:text-[16.5px]">
@@ -23,12 +23,12 @@ export default function Problem() {
         <div className="mt-9 overflow-hidden border border-line">
           <div className="grid grid-cols-2">
             <div className="border-r border-line bg-paper-alt px-4 py-3.5 sm:px-6">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-faint sm:text-xs">
+              <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ink-faint sm:text-xs">
                 {t.problem.colBefore}
               </span>
             </div>
             <div className="bg-ink px-4 py-3.5 sm:px-6">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[oklch(0.78_0.09_50)] sm:text-xs">
+              <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-accent sm:text-xs">
                 {t.problem.colAfter}
               </span>
             </div>
@@ -44,7 +44,7 @@ export default function Problem() {
         </div>
 
         <div className="mt-7 border-l-[3px] border-accent bg-paper-alt px-5 py-4 sm:px-7">
-          <p className="font-serif text-base italic leading-snug text-ink sm:text-[17px]">
+          <p className="font-accent-italic text-base leading-snug text-ink sm:text-[17px]">
             {t.problem.quote}
           </p>
           <p className="mt-2 text-[13px] text-ink-faint">{t.problem.quoteAttribution}</p>

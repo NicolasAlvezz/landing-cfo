@@ -10,13 +10,13 @@ export default function Trust() {
       <div className="container-page">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
-            <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-[oklch(0.78_0.09_50)]">
+            <span className="text-[12.5px] font-semibold uppercase tracking-[0.14em] text-accent">
               {t.trust.eyebrow}
             </span>
-            <h2 className="mt-4 font-serif text-[26px] font-semibold leading-tight text-white sm:text-4xl">
+            <h2 className="mt-4 font-heading text-[26px] font-bold leading-tight tracking-[-0.01em] text-bone sm:text-4xl">
               {t.trust.h2}
             </h2>
-            <p className="mt-4.5 max-w-[400px] text-base leading-relaxed text-[oklch(0.65_0.015_55)]">
+            <p className="mt-4.5 max-w-[400px] text-base leading-relaxed text-fog">
               {t.trust.p}
             </p>
           </div>
@@ -25,7 +25,7 @@ export default function Trust() {
             {t.trust.concerns.map((item, i) => (
               <div
                 key={item.concern}
-                className={`flex gap-4 py-[22px] ${i === t.trust.concerns.length - 1 ? "border-y" : "border-t"} border-[oklch(0.3_0.02_50)]`}
+                className={`flex gap-4 py-[22px] ${i === t.trust.concerns.length - 1 ? "border-y" : "border-t"} border-line-dark`}
               >
                 <svg
                   width="18"
@@ -39,10 +39,10 @@ export default function Trust() {
                   <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <div>
-                  <p className={`text-[15px] font-semibold text-white ${item.italic ? "italic" : ""}`}>
+                  <p className={`text-[15px] font-semibold text-bone ${item.italic ? "font-accent-italic font-semibold" : ""}`}>
                     {item.concern}
                   </p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-[oklch(0.6_0.015_55)]">
+                  <p className="mt-1.5 text-sm leading-relaxed text-fog">
                     {item.answer}
                   </p>
                 </div>
