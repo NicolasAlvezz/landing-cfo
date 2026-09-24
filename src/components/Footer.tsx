@@ -23,10 +23,23 @@ export default function Footer() {
 
         <a
           href={`mailto:${CONTACT_EMAILS.join(",")}`}
-          className="text-[12.5px] font-semibold text-accent-dark"
+          className="focus-ring rounded-[2px] text-[12.5px] font-semibold text-accent-dark"
         >
           {t.footer.contact}
         </a>
+      </div>
+      <div className="border-t border-line py-5">
+        <nav className="container-page flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          {t.footer.legalLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="focus-ring rounded-[2px] text-[11.5px] font-medium text-ink-soft underline-offset-2 hover:text-ink hover:underline"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
       </div>
       <div className="border-t border-line py-5 text-center font-mono text-[11px] tracking-[0.02em] text-ink-faint">
         © {new Date().getFullYear()} Finora. {t.footer.copyright}

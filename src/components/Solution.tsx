@@ -34,7 +34,7 @@ export default function Solution() {
                   {t.solution.heroCard.desc}
                 </p>
               </div>
-              <svg width="100%" height="90" viewBox="0 0 320 90" className="mt-6">
+              <svg width="100%" height="90" viewBox="0 0 320 90" className="mt-6" aria-hidden="true">
                 <polyline
                   points="0,70 40,60 80,64 120,40 160,48"
                   fill="none"

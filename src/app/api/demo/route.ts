@@ -10,6 +10,7 @@ type DemoRequestBody = {
   telefono?: string;
   rol?: string;
   mensaje?: string;
+  consentimiento?: string;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -77,7 +78,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Solicitud inválida." }, { status: 400 });
   }
 
-  const { nombre, empresa, email, telefono, rol, mensaje } = body;
+  const { nombre, empresa, email, telefono, rol, mensaje, consentimiento } = body;
 
   if (!nombre?.trim() || !empresa?.trim() || !email?.trim()) {
     return NextResponse.json(
@@ -88,6 +89,13 @@ export async function POST(request: Request) {
 
   if (!EMAIL_RE.test(email.trim())) {
     return NextResponse.json({ error: "El email no parece válido." }, { status: 400 });
+  }
+
+  if (!consentimiento) {
+    return NextResponse.json(
+      { error: "Necesitamos tu consentimiento para contactarte." },
+      { status: 400 }
+    );
   }
 
   const submission = {

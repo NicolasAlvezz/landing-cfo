@@ -27,8 +27,10 @@ export default function FAQ() {
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 py-7 text-left"
+                  className="focus-ring flex w-full items-center justify-between gap-4 py-7 text-left"
                   aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${i}`}
+                  id={`faq-question-${i}`}
                 >
                   <span className="font-heading text-base font-semibold text-ink sm:text-[17px]">
                     {item.q}
@@ -40,12 +42,16 @@ export default function FAQ() {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2.5"
+                    aria-hidden="true"
                     className={`shrink-0 text-ink-faint transition-transform ${isOpen ? "rotate-45" : ""}`}
                   >
                     <path d="M12 5v14M5 12h14" strokeLinecap="round" />
                   </svg>
                 </button>
                 <div
+                  id={`faq-answer-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${i}`}
                   className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out ${
                     isOpen ? "grid-rows-[1fr] pb-7" : "grid-rows-[0fr]"
                   }`}

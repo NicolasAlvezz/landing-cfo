@@ -17,6 +17,7 @@ export default function Hero() {
         height="900"
         viewBox="0 0 900 900"
         className="pointer-events-none absolute -right-[260px] -top-[260px] opacity-40"
+        aria-hidden="true"
       >
         <circle cx="450" cy="450" r="449" fill="none" stroke="var(--color-line-dark)" strokeWidth="1" />
         <circle cx="450" cy="450" r="360" fill="none" stroke="var(--color-line-dark)" strokeWidth="1" />
@@ -54,21 +55,21 @@ export default function Hero() {
               <Magnetic>
                 <a
                   href="#demo"
-                  className="inline-flex items-center justify-center rounded-[3px] bg-accent px-[30px] py-[15px] text-[15.5px] font-semibold text-ink transition-shadow hover:shadow-[0_10px_28px_-10px_rgba(192,132,58,0.55)]"
+                  className="focus-ring inline-flex items-center justify-center rounded-[3px] bg-accent px-[30px] py-[15px] text-[15.5px] font-semibold text-ink transition-shadow hover:shadow-[0_10px_28px_-10px_rgba(192,132,58,0.55)]"
                 >
                   {t.hero.ctaPrimary}
                 </a>
               </Magnetic>
               <a
                 href="#producto"
-                className="inline-flex items-center justify-center rounded-[3px] border-[1.5px] border-line-dark px-[30px] py-[15px] text-[15.5px] font-semibold text-bone transition-colors hover:bg-white/5"
+                className="focus-ring inline-flex items-center justify-center rounded-[3px] border-[1.5px] border-line-dark px-[30px] py-[15px] text-[15.5px] font-semibold text-bone transition-colors hover:bg-white/5"
               >
                 {t.hero.ctaSecondary}
               </a>
             </div>
 
             <p
-              className="animate-fade-up mt-7 text-[13.5px] text-ink-faint"
+              className="animate-fade-up mt-7 text-[13.5px] text-fog"
               style={{ animationDelay: "300ms" }}
             >
               {t.hero.integrations}

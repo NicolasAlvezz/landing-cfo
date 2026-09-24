@@ -29,7 +29,7 @@ export default function Voice() {
         <Reveal delay={200} className="mt-9 overflow-hidden border border-line">
           <div className="grid grid-cols-2">
             <div className="border-r border-line bg-white px-4 py-3.5 sm:px-6">
-              <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-forest sm:text-xs">
+              <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-forest-dark sm:text-xs">
                 {t.voice.colWeSay}
               </span>
             </div>

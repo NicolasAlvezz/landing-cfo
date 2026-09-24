@@ -127,7 +127,7 @@ export default function ProductPreview({ data }: { data: Preview }) {
               </div>
             </div>
 
-            <svg viewBox="0 0 400 140" className="mt-3 w-full" preserveAspectRatio="none">
+            <svg viewBox="0 0 400 140" className="mt-3 w-full" preserveAspectRatio="none" aria-hidden="true">
               <polygon
                 ref={bandRef}
                 points="150,70 190,88 230,118 270,102 310,80 350,66 350,140 150,140"
@@ -191,7 +191,7 @@ export default function ProductPreview({ data }: { data: Preview }) {
           </div>
         </div>
       </div>
-      <p className="mt-3 text-center text-[11.5px] text-ink-faint sm:text-left">{data.caption}</p>
+      <p className="mt-3 text-center text-[11.5px] text-fog sm:text-left">{data.caption}</p>
     </div>
   );
 }

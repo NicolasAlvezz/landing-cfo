@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Sora, Figtree, IBM_Plex_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/language-context";
+import SkipLink from "@/components/SkipLink";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -52,7 +53,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`h-full antialiased ${sora.variable} ${figtree.variable} ${plexMono.variable} ${newsreader.variable}`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink font-sans">
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          <SkipLink />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

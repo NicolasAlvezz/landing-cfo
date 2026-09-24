@@ -2,6 +2,7 @@ export type Locale = "es" | "en";
 
 export const translations = {
   es: {
+    skipToContent: "Saltar al contenido",
     header: {
       nav: [
         { href: "#problema", label: "El problema" },
@@ -14,6 +15,7 @@ export const translations = {
       ],
       cta: "Agendar demo",
       openMenu: "Abrir menú",
+      closeMenu: "Cerrar menú",
     },
     hero: {
       badge: "Asistente financiero con IA para pymes uruguayas",
@@ -23,7 +25,7 @@ export const translations = {
       ctaSecondary: "Ver una alerta real",
       integrations: "Se integra con Odoo, Excel/Google Sheets y otros sistemas contables que ya usás.",
       stats: [
-        { value: "Multisector", label: "tecnología, salud, industria, comercio y más ya lo validaron" },
+        { value: "Multisector", label: "tecnología, salud, industria, comercio y más participaron de la validación" },
         { value: "1 a 50+", label: "empleados: el rango de tamaño de las empresas consultadas" },
         { value: "Semanal", label: "la frecuencia de actualización más pedida" },
       ],
@@ -198,7 +200,7 @@ export const translations = {
         {
           concern: "Seguridad y confidencialidad de la información",
           answer:
-            "Fue la preocupación más repetida en nuestra validación. Tus datos financieros son sensibles y así los tratamos: cifrado, control de accesos y vos decidís qué se conecta.",
+            "Fue la preocupación más repetida en nuestra validación, y es el principio con el que estamos diseñando Finora: cifrado en tránsito y en reposo, control de accesos y vos decidís qué se conecta. Vamos a publicar el detalle técnico antes del lanzamiento.",
           italic: false,
         },
         {
@@ -301,7 +303,7 @@ export const translations = {
         },
         {
           q: "¿Cómo protegen la seguridad de mis datos financieros?",
-          a: "Fue la principal preocupación en la validación que hicimos, y la tomamos en serio: la información se transmite y almacena cifrada, con control de accesos, y vos decidís qué sistemas conectar y qué datos compartir.",
+          a: "Fue la principal preocupación en la validación que hicimos, y la tomamos en serio: estamos diseñando Finora para transmitir y almacenar la información cifrada, con control de accesos, y vos vas a decidir qué sistemas conectar y qué datos compartir. Publicaremos el detalle técnico antes de que la herramienta esté disponible.",
         },
         {
           q: "¿Qué es el “nivel de confianza” que muestra cada informe?",
@@ -355,7 +357,8 @@ export const translations = {
       },
       submit: "Agendar demo",
       submitting: "Enviando...",
-      consent: "Al enviar aceptás que te contactemos para coordinar la demo. No compartimos tu información con terceros.",
+      consent: "Acepto que Finora me contacte para coordinar la demo, según su",
+      consentLink: "Política de Privacidad",
       success: {
         title: "¡Listo, recibimos tu solicitud!",
         p: "Te vamos a escribir en las próximas horas para coordinar el mejor horario para la demo.",
@@ -370,9 +373,16 @@ export const translations = {
       tagline: "Proyecto de Laboratorio de Proyectos Aplicados — Universidad ORT Uruguay. En etapa de validación con empresas uruguayas.",
       contact: "Escribinos",
       copyright: "Todos los derechos reservados.",
+      legalLinks: [
+        { href: "/privacidad", label: "Privacidad" },
+        { href: "/terminos", label: "Términos" },
+        { href: "/cookies", label: "Cookies" },
+        { href: "/reembolso", label: "Reembolsos" },
+      ],
     },
   },
   en: {
+    skipToContent: "Skip to content",
     header: {
       nav: [
         { href: "#problema", label: "The problem" },
@@ -385,6 +395,7 @@ export const translations = {
       ],
       cta: "Book a demo",
       openMenu: "Open menu",
+      closeMenu: "Close menu",
     },
     hero: {
       badge: "AI-powered financial assistant for Uruguayan SMEs",
@@ -394,7 +405,7 @@ export const translations = {
       ctaSecondary: "See a real alert",
       integrations: "Integrates with Odoo, Excel/Google Sheets and other accounting systems you already use.",
       stats: [
-        { value: "Multi-industry", label: "technology, healthcare, manufacturing, retail and more already validated it" },
+        { value: "Multi-industry", label: "technology, healthcare, manufacturing, retail and more took part in our validation" },
         { value: "1 to 50+", label: "employees: the size range of the companies we surveyed" },
         { value: "Weekly", label: "the most-requested update frequency" },
       ],
@@ -568,7 +579,7 @@ export const translations = {
         {
           concern: "Security and confidentiality of the information",
           answer:
-            "This was the most repeated concern in our validation. Your financial data is sensitive, and we treat it that way: encryption, access controls, and you decide what gets connected.",
+            "This was the most repeated concern in our validation, and it's the principle we're designing Finora around: encryption in transit and at rest, access controls, and you decide what gets connected. We'll publish the technical detail before launch.",
           italic: false,
         },
         {
@@ -663,7 +674,7 @@ export const translations = {
         },
         {
           q: "How do you protect the security of my financial data?",
-          a: "This was the top concern in our validation, and we take it seriously: information is transmitted and stored encrypted, with access controls, and you decide which systems to connect and what data to share.",
+          a: "This was the top concern in our validation, and we take it seriously: we're designing Finora to transmit and store information encrypted, with access controls, and you'll decide which systems to connect and what data to share. We'll publish the technical detail before the tool is available.",
         },
         {
           q: "What does the “confidence level” on each report mean?",
@@ -717,7 +728,8 @@ export const translations = {
       },
       submit: "Book demo",
       submitting: "Sending...",
-      consent: "By submitting, you agree that we may contact you to schedule the demo. We don't share your information with third parties.",
+      consent: "I agree that Finora may contact me to schedule the demo, per its",
+      consentLink: "Privacy Policy",
       success: {
         title: "Done — we received your request!",
         p: "We'll reach out in the next few hours to coordinate the best time for the demo.",
@@ -732,6 +744,12 @@ export const translations = {
       tagline: "A Laboratorio de Proyectos Aplicados project — Universidad ORT Uruguay. Currently in the validation stage with Uruguayan companies.",
       contact: "Email us",
       copyright: "All rights reserved.",
+      legalLinks: [
+        { href: "/privacidad", label: "Privacy" },
+        { href: "/terminos", label: "Terms" },
+        { href: "/cookies", label: "Cookies" },
+        { href: "/reembolso", label: "Refunds" },
+      ],
     },
   },
 };

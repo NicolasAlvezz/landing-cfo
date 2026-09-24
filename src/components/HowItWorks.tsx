@@ -19,7 +19,7 @@ function StepCard({ step, index }: { step: Step; index: number }) {
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="font-mono text-[15px] font-medium text-accent">{String(index + 1).padStart(2, "0")}</div>
+      <div className="font-mono text-[15px] font-medium text-accent-dark">{String(index + 1).padStart(2, "0")}</div>
       <div className="relative mt-[14px] h-px overflow-hidden bg-line">
         <div
           className="absolute inset-y-0 left-0 h-px bg-accent transition-[width] duration-700 ease-out"

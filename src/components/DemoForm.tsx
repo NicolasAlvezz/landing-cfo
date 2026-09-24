@@ -80,11 +80,11 @@ export default function DemoForm() {
               ))}
             </ul>
 
-            <p className="mt-8 text-[13.5px] text-ink-faint">
+            <p className="mt-8 text-[13.5px] text-fog">
               {t.demoForm.contactPrefix}{" "}
               <a
                 href={`mailto:${CONTACT_EMAILS.join(",")}`}
-                className="font-semibold text-bone underline underline-offset-4"
+                className="focus-ring rounded-[2px] font-semibold text-bone underline underline-offset-4"
               >
                 {t.demoForm.contactLink}
               </a>
@@ -95,7 +95,7 @@ export default function DemoForm() {
             {status === "success" ? (
               <div className="flex flex-col items-center justify-center py-10 text-center">
                 <span className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-accent-dark">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
@@ -106,7 +106,7 @@ export default function DemoForm() {
                 <button
                   type="button"
                   onClick={() => setStatus("idle")}
-                  className="mt-6 text-sm font-semibold text-accent-dark hover:text-accent"
+                  className="focus-ring mt-6 rounded-[2px] text-sm font-semibold text-accent-dark hover:text-accent"
                 >
                   {t.demoForm.success.another}
                 </button>
@@ -149,7 +149,7 @@ export default function DemoForm() {
                   </span>
                   <select
                     name="rol"
-                    className="rounded-[2px] border border-line bg-white px-[13px] py-[11px] text-[14.5px] text-ink outline-none focus:border-accent"
+                    className="focus-ring rounded-[2px] border border-line bg-white px-[13px] py-[11px] text-[14.5px] text-ink focus:border-accent-dark"
                     defaultValue=""
                   >
                     <option value="" disabled>
@@ -171,22 +171,39 @@ export default function DemoForm() {
                     name="mensaje"
                     rows={3}
                     placeholder={t.demoForm.fields.mensaje.placeholder}
-                    className="resize-none rounded-[2px] border border-line bg-white px-[13px] py-[11px] text-[14.5px] text-ink outline-none placeholder:text-ink-faint focus:border-accent"
+                    className="focus-ring resize-none rounded-[2px] border border-line bg-white px-[13px] py-[11px] text-[14.5px] text-ink placeholder:text-ink-faint focus:border-accent-dark"
                   />
                 </label>
 
                 {status === "error" && (
-                  <p className="rounded-[2px] bg-danger-soft px-3.5 py-2.5 text-sm text-danger">{errorMsg}</p>
+                  <p className="rounded-[2px] bg-danger-soft px-3.5 py-2.5 text-sm text-danger-dark" role="alert">
+                    {errorMsg}
+                  </p>
                 )}
+
+                <label className="flex items-start gap-2.5 text-xs leading-relaxed text-ink-faint">
+                  <input
+                    type="checkbox"
+                    name="consentimiento"
+                    required
+                    className="focus-ring mt-0.5 h-4 w-4 shrink-0 accent-accent-dark"
+                  />
+                  <span>
+                    {t.demoForm.consent}{" "}
+                    <a href="/privacidad" className="focus-ring rounded-[2px] font-semibold text-ink-soft underline underline-offset-2">
+                      {t.demoForm.consentLink}
+                    </a>
+                    .
+                  </span>
+                </label>
 
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="mt-1 inline-flex w-full items-center justify-center rounded-[3px] bg-ink px-6 py-[15px] text-[15.5px] font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="focus-ring mt-1 inline-flex w-full items-center justify-center rounded-[3px] bg-ink px-6 py-[15px] text-[15.5px] font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {status === "loading" ? t.demoForm.submitting : t.demoForm.submit}
                 </button>
-                <p className="text-center text-xs leading-relaxed text-ink-faint">{t.demoForm.consent}</p>
               </form>
             )}
           </Reveal>
@@ -213,14 +230,14 @@ function Field({
     <label className="flex flex-col gap-1.5">
       <span className="text-[12.5px] font-semibold text-ink-soft">
         {label}
-        {required && <span className="text-accent"> *</span>}
+        {required && <span className="text-accent-dark"> *</span>}
       </span>
       <input
         type={type}
         name={name}
         required={required}
         placeholder={placeholder}
-        className="rounded-[2px] border border-line bg-white px-[13px] py-[11px] text-[14.5px] text-ink outline-none placeholder:text-ink-faint focus:border-accent"
+        className="focus-ring rounded-[2px] border border-line bg-white px-[13px] py-[11px] text-[14.5px] text-ink placeholder:text-ink-faint focus:border-accent-dark"
       />
     </label>
   );

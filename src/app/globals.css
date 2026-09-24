@@ -11,8 +11,9 @@
   --color-ink: #07132f;
   /* Pizarra: texto secundario sobre claro. */
   --color-ink-soft: #5a6685;
-  /* Niebla, aclarada para uso como texto terciario sobre fondos claros. */
-  --color-ink-faint: #8b96b3;
+  /* Niebla, oscurecida para texto terciario sobre fondos claros: pasa WCAG AA
+     (4.5:1) en Claro, Claro-alt y Hueso. El tono original (#8b96b3) no llegaba. */
+  --color-ink-faint: #5d6a8e;
 
   /* Marino: tarjetas y bloques levantados sobre la noche. */
   --color-marine: #0c2150;
@@ -36,6 +37,9 @@
   /* Verde saldo: solo estado positivo / validado. No decora. */
   --color-forest: #34c28a;
   --color-forest-soft: #d9f3e8;
+  /* Verde saldo, oscurecido para texto legible sobre fondos claros (el tono
+     base es un fill/estado, no pasa 4.5:1 como texto). */
+  --color-forest-dark: #207956;
 
   /* Azul señal: datos reales en gráficos, links y foco. */
   --color-signal: #5b8def;
@@ -43,6 +47,9 @@
   /* Rojo quiebre: saldo negativo y errores. No decora nada. */
   --color-danger: #f0605d;
   --color-danger-soft: #fbdedd;
+  /* Rojo quiebre, oscurecido para texto legible sobre fondos claros (mensajes
+     de error de formulario). */
+  --color-danger-dark: #a3120f;
 
   /* Sora — Ancla: títulos y números grandes. */
   --font-heading: "Sora", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
@@ -80,6 +87,78 @@ body {
 
 .text-balance {
   text-wrap: balance;
+}
+
+/* Anillo de foco visible y con contraste suficiente (>=3:1) para teclado,
+   en vez de depender solo de un cambio de color de borde. */
+.focus-ring {
+  outline: none;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-accent-dark);
+  outline-offset: 2px;
+}
+
+.prose-legal h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin-top: 4px;
+}
+
+.prose-legal h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-ink);
+}
+
+.prose-legal ul {
+  list-style: disc;
+  padding-left: 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.prose-legal strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.prose-legal a {
+  color: var(--color-accent-dark);
+  font-weight: 600;
+  text-underline-offset: 2px;
+}
+
+.prose-legal mark {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+  padding: 0.05em 0.3em;
+  border-radius: 2px;
+}
+
+/* Enlace "saltar al contenido": oculto hasta que recibe foco por teclado. */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 12px;
+  z-index: 100;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  padding: 12px 18px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: top 0.15s ease-out;
+}
+
+.skip-link:focus-visible {
+  top: 12px;
 }
 
 .font-accent-italic {
